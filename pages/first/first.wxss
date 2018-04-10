@@ -1,0 +1,16 @@
+/* pages/first/first.wxss */
+page{background-color: #F0F6F9; display: flex; flex-direction: column;}
+swiper{ height: 100%;}
+.imagetop{ width: 100% ;height: 100%;}
+.top{height: 272rpx;}
+.count{margin: 40rpx 40rpx 30rpx 40rpx; background: #FFFFFF; border-radius:20rpx; padding: 30rpx 55rpx 0rpx 55rpx;}
+.count .mbfont{font-size: 26rpx;color:#888888 ; line-height: 64rpx; font-weight: 600;}
+.inpview{height:100rpx; background-color: #E3EDF4; display: flex;flex-direction: row;align-items: center}
+.inpimage{ width: 36rpx; height: 36rpx;margin: 34rpx 15rpx 30rpx 13rpx;}
+.inpfont{font-size: 34rpx;color: #000000;}
+.inpmargin{ margin-bottom: 20rpx;}
+.btn{background-color: #19A7E9; margin-bottom: 64rpx; margin-top:80rpx;color: #FFFFFF;font-size: 32rpx;}
+.foot{ margin:30rpx 51rpx 20rpx 51rpx;}
+.foot_font{font-size: 28rpx;color: #7D7D7D;font-weight: 600;}
+.tab{ margin-top: 24rpx; font-size: 24rpx;color: #A8A8A8;display: flex;flex-wrap: wrap;}
+.tab view{border-radius:23rpx;   padding: 12rpx 19rpx; border: 1rpx #A8A8A8 solid; margin-right: 24rpx; margin-bottom: 24rpx;}

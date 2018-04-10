@@ -1,0 +1,6 @@
+<!--pages/second/second.wxml-->
+<view class="count">
+<view class='mbfont'>实现愿望期限</view>
+<view class="inpview">
+</view>
+</view>

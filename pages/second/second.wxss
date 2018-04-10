@@ -1,0 +1,5 @@
+/* pages/second/second.wxss */
+page{background-color: #F0F6F9; display: flex; flex-direction: column;}
+.count{margin: 40rpx 40rpx 30rpx 40rpx; background: #FFFFFF; border-radius:20rpx; padding: 30rpx 55rpx 0rpx 55rpx;}
+.count .mbfont{font-size: 26rpx;color:#888888 ; line-height: 64rpx; font-weight: 600;}
+.inpview{height:90rpx; display: flex;flex-direction: row;align-items: center;}

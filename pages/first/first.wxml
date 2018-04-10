@@ -1,0 +1,36 @@
+<!--pages/first/first.wxml-->
+<view class="top">
+    <swiper indicator-dots='true' autoplay='true' interval='5000' duration='1000'>
+    <block wx:for="{{imgUrls}}">
+    <swiper-item >
+    <image src='{{item}}' class="imagetop"></image>
+    </swiper-item>
+    </block>
+    
+    </swiper>
+</view>
+
+<view class="count">
+<view class='mbfont'>未来的愿望</view>
+<view class="inpview inpmargin">
+  <image src='../../image/wish.png' class="inpimage"></image>
+  <input class='inptext' placeholder='未来的愿望' placeholder-class='inpfont'></input>
+</view>
+<view class='mbfont'>目标愿望预算</view>
+<view class="inpview">
+  <image src='../../image/money.png' class="inpimage"></image>
+  <input class='inptext' placeholder='金额' placeholder-class='inpfont'></input>
+</view>
+<button class="btn" bindtap='next_step'>下一步</button>
+</view>
+<view class="foot">
+ <view class="foot_font"> <text>看看大家努力的愿望</text></view>
+ <view class="tab">
+   <view>两年后的旅行</view>
+   <view>六年后的培养</view>
+   <view>存1万块</view>
+   <view>买个LV包</view>
+   <view>买台MacBook</view>
+ </view>
+
+</view>
