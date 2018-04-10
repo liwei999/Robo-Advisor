@@ -1,4 +1,4 @@
-// pages/second/second.js
+// pages/third/third.js
 Page({
 
   /**
@@ -62,11 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
-  ,
-  next_step:function(){
-    wx.navigateTo({
-      url: '../third/third',
-    })
   }
 })

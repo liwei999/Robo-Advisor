@@ -2,5 +2,30 @@
 <view class="count">
 <view class='mbfont'>实现愿望期限</view>
 <view class="inpview">
+  <view class='inpleft'><image src='../../image/minus.png' class='inpimage'></image></view>
+  <view class="inpcount"><input placeholder-class='inpfont' placeholder='6' class='inpclass'></input><view>个月</view></view>
+  <view class='inpright'><image src='../../image/Plus.png' class='inpimage'></image></view>
 </view>
+<view class='target'><text>预计2018年9月达成</text></view>
+
+<view class='mbfont mbfont_margin_top'>有无投入资金</view>
+<view class="havemoney">
+ <view class="havemoneyleft">
+ <view class='havetitle'>可投入资金</view>
+ <view class='btnmoney'><input placeholder='点击输入金额' placeholder-class='inpmoney'></input></view>
+ </view>
+ <view class="havemoneyright havemoneyactionr">
+ <view >暂无金额</view>
+ </view>
+</view>
+
+
+<view class='mbfont mbfont_margin_top'>最大风险承受</view>
+<view class="inpview">
+  <view class='inpleft'><image src='../../image/minus.png' class='inpimage'></image></view>
+  <view class="inpcount"><input placeholder-class='inpfont' placeholder='6' class='inpclass'></input><view>%</view></view>
+  <view class='inpright'><image src='../../image/Plus.png' class='inpimage'></image></view>
+</view>
+
+<button class="btn" bindtap='next_step'>确认</button>
 </view>
