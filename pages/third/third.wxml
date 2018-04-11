@@ -1,7 +1,10 @@
 <!--pages/third/third.wxml-->
 <view class="count">
  <view class='count_title'>期望收益</view>
- <view class="first_char"></view>
+ <view class="first_char">
+ <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+ 
+ </view>
  <view class='first_table'>
   <view class='first_row'>
     <view class='. first_row_count first_row_count1'>预期收益率</view><view class=' first_row_count first_row_count2 font_red'>2.56%</view>

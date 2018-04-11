@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "我有一个小小的心愿"
+  "navigationBarTitleText": "我有一个小小的心愿",
+  "usingComponents": {
+    "ec-canvas": "../../ec-canvas/ec-canvas"
+  }
 }
