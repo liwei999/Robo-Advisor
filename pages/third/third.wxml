@@ -1,2 +1,39 @@
 <!--pages/third/third.wxml-->
-<text>pages/third/third.wxml</text>
+<view class="count">
+ <view class='count_title'>期望收益</view>
+ <view class="first_char"></view>
+ <view class='first_table'>
+  <view class='first_row'>
+    <view class='. first_row_count first_row_count1'>预期收益率</view><view class=' first_row_count first_row_count2 font_red'>2.56%</view>
+  </view>
+   <view class='first_jy'>建议您每月1日定期投入986元</view>
+ </view>
+ <view class='remarks'>
+ 注：以上为历史测算所得，不能代表未来
+ </view>
+</view>
+
+<view class="count second">
+<view class='count_title'>风险概率</view>
+ <view class='first_table'>
+ <view class='row'> 
+ <view>收益区间在1.5%-3.1%</view>
+ <view class="font_red">90%概率达成</view>
+ </view>
+ <view class='row'>
+ <view>最大亏损为-1.9%</view>
+ <view class="font_red">0.5%概率出现</view>
+ </view>
+ <view class='row'>
+ <view>其他收益区间</view>
+ <view class="font_red">9.5%概率出现</view>
+ </view>
+ </view>
+  <view class='remarks'>
+ 注：以上为历史测算所得，不能代表未来
+ </view>
+</view>
+
+<view class="count third">
+<view class='count_title'>历史走势</view>
+</view>
