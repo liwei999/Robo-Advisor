@@ -157,6 +157,28 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    return {
+      title: '我有一个小小的心愿',
+      path: '/pages/third/third',
+      success: function (res) {
+        // 转发成功
+        // console.log("aaaa");
+        // console.log(res);
+        wx.showToast({
+          title: '分享成功',
+          duration: 2000,
+        });
+      },
+      fail: function (res) {
+        // 转发失败
+        // console.log("bbb");
+        // console.log(res);
+        wx.showToast({
+          title: '分享失败',
+          duration:2000,
+          icon: 'none'
+        });
+      }
+    }
   }
 })

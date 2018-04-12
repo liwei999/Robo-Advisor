@@ -1,0 +1,2 @@
+<!--pages/webviewThird/webviewThird.wxml-->
+<web-view src="{{url}}"></web-view>

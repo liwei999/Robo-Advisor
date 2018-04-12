@@ -3,7 +3,8 @@
     "pages/first/first",
     "pages/index/index",
     "pages/second/second",
-    "pages/third/third"
+    "pages/third/third",
+    "pages/webviewThird/webviewThird"
   ],
   "window": {
     "backgroundTextStyle": "light",
