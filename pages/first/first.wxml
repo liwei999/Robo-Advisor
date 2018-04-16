@@ -14,23 +14,23 @@
 <view class='mbfont'>未来的愿望</view>
 <view class="inpview inpmargin">
   <image src='../../image/wish.png' class="inpimage"></image>
-  <input class='inptext' placeholder='未来的愿望' placeholder-class='inpfont'></input>
+  <input class='inptext' placeholder='未来的愿望' placeholder-class='inpfont' value='{{desireInp}}' bindinput='desireInp'></input>
 </view>
 <view class='mbfont'>目标愿望预算</view>
 <view class="inpview">
   <image src='../../image/money.png' class="inpimage"></image>
-  <input class='inptext' placeholder='金额' placeholder-class='inpfont'></input>
+  <input class='inptext' placeholder='金额' placeholder-class='inpfont' value='{{desireMoney}}' bindinput='desireInpMoney'></input>
 </view>
 <button class="btn" bindtap='next_step'>下一步</button>
 </view>
 <view class="foot">
  <view class="foot_font"> <text>看看大家努力的愿望</text></view>
- <view class="tab">
-   <view>两年后的旅行</view>
-   <view>六年后的培养</view>
+ <view class="tab" >
+   <view data-money='{{item.money}}' data-time='{{item.time}}' data-title='{{item.title}}' wx:for="{{desire}}" wx:for-index="index" wx:key="title" wx:for-item="item" bindtap='click_desire'>{{item.title}}</view>
+   <!-- <view>六年后的培养</view>
    <view>存1万块</view>
    <view>买个LV包</view>
-   <view>买台MacBook</view>
+   <view>买台MacBook</view> -->
  </view>
 
 </view>
