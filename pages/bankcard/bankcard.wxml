@@ -1,0 +1,8 @@
+<!--pages/bankcard/bankcard.wxml-->
+<view class='bank_first'> 
+<image src='../../image/bankdemo1.png' mode='scaleToFill'></image>
+</view>
+
+<view class='bank_first'> 
+<image src='../../image/addbank.png' mode='scaleToFill' class='addimage' bindtap='onclick'></image>
+</view>

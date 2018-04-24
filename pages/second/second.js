@@ -79,7 +79,7 @@ Page({
   //,
   next_step:function(){
     wx.navigateTo({
-      url: '../webviewThird/webviewThird',
+      url: '../third/third',
     })
   },
   /**
@@ -102,8 +102,8 @@ Page({
     var that = this;
     if (e.currentTarget.dataset.time=="one")
     {
-      var time = that.data.timevalue > 0 ? --that.data.timevalue: 0;
-      that.setData({ timevalue: that.data.timevalue});      
+      var time = that.data.timevalue >=6 ? that.data.timevalue-6: 0;
+      that.setData({ timevalue: time});      
     }
     else
     {
@@ -119,7 +119,7 @@ Page({
   timeadd:function(e){
     var that = this;
     if (e.currentTarget.dataset.time == "one") {
-      that.setData({ timevalue: ++that.data.timevalue });
+      that.setData({ timevalue: that.data.timevalue+6 });
     }
     else
     {

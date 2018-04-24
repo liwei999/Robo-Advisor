@@ -1,19 +1,19 @@
-// pages/webviewThird/webviewThird.js
+// pages/myMain/myMain.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    url: ""
+    currentTab: 0,
+    item_bar:[true,false,false,false]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    that.setData({ url: "http://localhost:8081/#/?_k=ebqc8x" });
+  
   },
 
   /**
@@ -59,31 +59,37 @@ Page({
   },
 
   /**
-     * 用户点击右上角分享
-     */
+   * 用户点击右上角分享
+   */
   onShareAppMessage: function () {
-    return {
-      title: '我有一个小小的心愿',
-      path: '/pages/webviewThird/webviewThird',
-      success: function (res) {
-        // 转发成功
-        // console.log("aaaa");
-        // console.log(res);
-        wx.showToast({
-          title: '分享成功',
-          duration: 2000,
-        });
-      },
-      fail: function (res) {
-        // 转发失败
-        // console.log("bbb");
-        // console.log(res);
-        wx.showToast({
-          title: '分享失败',
-          duration: 2000,
-          icon: 'none'
-        });
-      }
+  
+  },
+  /** 
+   * 点击tab切换 
+   */
+  swichNav: function (e) {
+
+    var that = this;
+
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current,
+        Account_Type: e.target.dataset.current,
+        //temp: e.detail.current == 0 ? '团队' : '理财师'
+      });
     }
+  },
+  on_first_tab:function(e){
+    var index= this.data.item_bar[e.target.dataset.index]
+    var temp = [false, false, false, false];
+    temp[e.target.dataset.index] = !index;
+   
+      this.setData({ item_bar: temp })
+      
+  
+   
+
   }
 })

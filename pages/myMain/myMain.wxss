@@ -1,0 +1,31 @@
+/* pages/myMain/myMain.wxss */
+page{background-color: #F0F6F9; display: flex; flex-direction: column;}
+.first{background-color: #ffffff; margin-top: 24rpx;}
+
+/**tab样式**/  
+.swiper-tab{  
+    width: 100%;  
+    text-align: center;  
+    line-height: 79rpx;
+    height:79rpx; 
+    border-bottom:1rpx solid #D8E2E8;
+    }  
+.swiper-tab-list{
+    font-size: 30rpx;
+    display: inline-block;  
+    width: 33.3333333%;  
+    color: #373737;
+    font-weight: none; 
+    
+}  
+.on{ color: #19A7E9;  
+    border-bottom: 4rpx solid #19A7E9; height: 75rpx; font-weight: bold;}  
+  
+.swiper-box{ display: block;  width: 100%; overflow: hidden; height: 514rpx;}  
+.swiper-box view{  
+    text-align: center;  
+}
+
+.first_tab{font-size: 28rpx;color: #19A7E9;display: flex;flex-direction: row; border-radius: 10rpx;border: 1rpx solid #19A7E9; margin: 0rpx 30rpx 30rpx 30rpx;}
+.first_tab view{padding:13rpx 0 13rpx 0; flex: 1; text-align: center;}
+.first_tab_on{background-color: #19A7E9;color: #fff;}

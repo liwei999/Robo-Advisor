@@ -4,7 +4,11 @@
     "pages/index/index",
     "pages/second/second",
     "pages/third/third",
-    "pages/webviewThird/webviewThird"
+    "pages/webviewThird/webviewThird",
+    "pages/bankcard/bankcard",
+    "pages/certification/certification",
+    "pages/bindingBankCard/bindingBankCard",
+    "pages/myMain/myMain"
   ],
   "window": {
     "backgroundTextStyle": "light",

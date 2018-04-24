@@ -1,0 +1,19 @@
+<!--pages/bindingBankCard/bindingBankCard.wxml-->
+<view class='one'><text>请输入您的银行卡信息</text></view>
+<view class='two'>
+  <view class="row">
+    <label>银行名称</label>
+    <input placeholder='请选择开户行' placeholder-class='inputP'></input>
+    <view class='more'><text>></text></view> 
+  </view>
+  <view class="row">
+    <label>银行卡号</label>
+    <input placeholder='请输入您的银行卡号' placeholder-class='inputP'></input>
+  </view>
+  <view class="row">
+    <label>预留手机</label>
+    <input placeholder='请输入银行预留手机号' placeholder-class='inputP'></input>
+  </view>
+</view>
+<view class='four'><text>*预留手机号是您在银行柜台办理开户时登记的移动电话号码</text></view>
+<view class="three"><button class="btn" bindtap='next_step'>确认绑定</button></view>

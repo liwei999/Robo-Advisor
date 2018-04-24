@@ -4,10 +4,13 @@ page{background-color: #F0F6F9; display: flex; flex-direction: column;}
 
 .second{ margin-top: 24rpx; }
 
-.third{ margin-bottom: 14rpx; height: 510rpx;}
+.third{ margin-bottom: 14rpx;}
+.third_char{background-color: #F6FCFF; border: 1px solid #E5EDF2;  height: 416rpx; margin-bottom: 24rpx;}
+.third_char image{width: 100%; height: 100%;}
 
 .count_title{font-size: 26rpx; color:#888888; margin: 23rpx 0 20rpx 24rpx;}
 .first_char{ background-color: #F6FCFF; border: 1px solid #E5EDF2;  height: 340rpx; margin-bottom: 24rpx;}
+.first_char image{ width: 100%;height: 100%;}
 .first_table{border: 1px solid #D8E2E8;}
 .first_table .first_row{display: flex;flex-direction: row; text-align: center;}
 .first_row_count{padding-bottom: 22rpx; padding-top: 21rpx;border-bottom: 1px solid #D8E2E8; background-color: #F6FCFF;}
@@ -26,3 +29,53 @@ page{background-color: #F0F6F9; display: flex; flex-direction: column;}
 .row view{ height: 100%;line-height: 70rpx;}
 .row view:first-child{flex: 3;font-size: 28rpx;color:#000000;border-right:1px solid #D8E2E8;}
 .row view:last-child{flex: 2;font-size:30rpx;}
+.four{display: flex; flex-direction:row; margin-bottom:44rpx;}
+.four button{ width: 300rpx;height: 90rpx; border: #19A7E9 solid 1rpx; font-size: 32rpx; color: #19A7E9; border-radius: 45rpx; margin-top: 16rpx;}
+/**
+下边列表 开始
+*/
+
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.drawer_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  height: 880rpx;
+}
+
+.menu_title{font-size: 36rpx;color: #000000;padding-top: 27rpx; padding-bottom: 27rpx; text-align: center; border: solid 1px #d9d9d9; display:flex;
+align-items:center;
+justify-content:center;
+}
+.menu_title icon{position: absolute; right: 30rpx;}
+.item{border-bottom: 1px solid #E1E6E9;font-size:32rpx;color: #000000; margin-left: 20rpx;}
+.item:first-child{display: flex; flex-direction: row; align-items:center;
+justify-content:left;height: 160rpx;}
+.item:first-child icon{ margin-right: 30rpx;}
+.item:last-child{display: flex; flex-direction: row; align-items:center;
+justify-content:left;height: 120rpx;}
+.item:last-child icon{ margin-right: 30rpx; } 
+.item_cen{font-size: 28rpx;color: #888888; }
+
+
+.three{ position:  absolute; bottom: 0rpx; width: 100%;}
+ .btn{background-color: #19A7E9;color: #FFFFFF;font-size: 32rpx; margin-right: 60rpx; margin-bottom: 80rpx;margin-left: 60rpx;} 
+/**
+下边列表 结束
+*/

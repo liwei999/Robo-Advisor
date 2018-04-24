@@ -1,19 +1,18 @@
-// pages/webviewThird/webviewThird.js
+// pages/bindingBankCard/bindingBankCard.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    url: ""
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    that.setData({ url: "http://localhost:8081/#/?_k=ebqc8x" });
+  
   },
 
   /**
@@ -59,31 +58,9 @@ Page({
   },
 
   /**
-     * 用户点击右上角分享
-     */
+   * 用户点击右上角分享
+   */
   onShareAppMessage: function () {
-    return {
-      title: '我有一个小小的心愿',
-      path: '/pages/webviewThird/webviewThird',
-      success: function (res) {
-        // 转发成功
-        // console.log("aaaa");
-        // console.log(res);
-        wx.showToast({
-          title: '分享成功',
-          duration: 2000,
-        });
-      },
-      fail: function (res) {
-        // 转发失败
-        // console.log("bbb");
-        // console.log(res);
-        wx.showToast({
-          title: '分享失败',
-          duration: 2000,
-          icon: 'none'
-        });
-      }
-    }
+  
   }
 })

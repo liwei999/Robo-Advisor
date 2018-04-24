@@ -1,0 +1,31 @@
+<!--pages/myMain/myMain.wxml-->
+<view class='first'>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">收益表现</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">回撤走势</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">月投收益</view>
+  </view>
+   
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="">
+    <!-- 收益表现 -->
+    <swiper-item >
+      收益表现
+    </swiper-item>
+    <!-- 回撤走势 -->
+    <swiper-item>
+      回撤走势
+    </swiper-item>
+    <!-- 月投收益 -->
+    <swiper-item>
+      月投收益
+    </swiper-item>
+  </swiper>
+
+  <view class='first_tab'>
+    <view class='{{item_bar[0]?"first_tab_on":""}}' bindtap='on_first_tab' data-index='0'>近三月</view>
+    <view class='{{item_bar[1]?"first_tab_on":""}}' bindtap='on_first_tab' data-index='1'>近半年</view>
+    <view class='{{item_bar[2]?"first_tab_on":""}}' bindtap='on_first_tab' data-index='2'>近一年</view>
+    <view class='{{item_bar[3]?"first_tab_on":""}}' bindtap='on_first_tab' data-index='3'>成立以来</view>
+  </view>
+  
+</view>

@@ -1,0 +1,5 @@
+/* pages/bankcard/bankcard.wxss */
+page{background-color: #F0F6F9; display: flex; flex-direction: column;}
+.bank_first{margin: 30rpx;}
+.bank_first image{ width: 100%; height: 288rpx;}
+.bank_first .addimage{ height: 200rpx;}

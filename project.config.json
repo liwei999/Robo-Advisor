@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
@@ -48,6 +48,30 @@
 					"id": -1,
 					"name": "third",
 					"pathName": "pages/third/third",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "bankcard",
+					"pathName": "pages/bankcard/bankcard",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "实名认证",
+					"pathName": "pages/certification/certification",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "绑定银行卡",
+					"pathName": "pages/bindingBankCard/bindingBankCard",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的易游宝",
+					"pathName": "pages/myMain/myMain",
 					"query": ""
 				}
 			]
