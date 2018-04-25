@@ -1,5 +1,7 @@
 {
   "pages": [
+        "pages/line/index",
+        "pages/bar/index",
     "pages/first/first",
     "pages/index/index",
     "pages/second/second",
