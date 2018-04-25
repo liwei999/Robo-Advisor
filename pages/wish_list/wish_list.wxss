@@ -1,0 +1,5 @@
+/* pages/wish_list/wish_list.wxss */
+page{background-color: #F0F6F9; display: flex; flex-direction: column;}
+.one{ height: 400rpx;}
+.two{ height: 344rpx; margin: 50rpx 30rpx 30rpx 30rpx;}
+.three{ height: 32rpx; margin: 0 30rpx 50rpx 30rpx; background-color: #fff; border:1rpx dashed  #19A7E9; color: #19A7E9; font-size: 32rpx; text-align: center; padding: 84rpx 0;}

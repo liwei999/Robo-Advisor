@@ -1,0 +1,9 @@
+/* pages/setup/setup.wxss */
+page{background-color: #F0F6F9; display: flex; flex-direction: column;}
+.one{background-color: #ffffff; padding: 26rpx 0 25rpx 30rpx; display: flex;flex-direction: row;}
+.one_icon{width: 100rpx;height: 100rpx;background: #CCCCCC; border-radius: 100%; margin-right: 30rpx;}
+
+.item{display: flex;flex-direction: row; background-color: #ffffff; margin-top: 24rpx; font-size: 30rpx; justify-content:space-between;}
+.item view:first-child{padding:40rpx 0 42rpx 32rpx;}
+.item view:last-child{ padding: 25rpx 30rpx 25rpx 0; font-size: 50rpx;color: #CCCCCC;}
+.space{ margin: 1rpx;}

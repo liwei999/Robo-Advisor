@@ -1,0 +1,25 @@
+<!--pages/wish_detailed/wish_detailed.wxml-->
+<view class="one">
+  <image src='../../image/temp21.png' style='width:100%;height:100%;'></image>
+</view>
+<view class="two">
+  <image src="../../image/temp22.png" style='width:100%;height:100%;'></image>
+</view>
+
+<view class='four_foot'>
+ <view bindtap='click_more' data-status="1">
+      更多
+ </view>
+ <view bindtap='click_accelerate'>加速实现心愿</view>
+</view>
+
+
+<view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+<view style='height:200rpx;'>
+ <image src='../../image/temp24.png' style='width:100%;height:100%'></image>
+</view>
+<view class="close" bindtap="setModalStatus" data-status="0"> 
+ 关闭
+</view>
+</view>

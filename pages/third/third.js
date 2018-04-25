@@ -1,8 +1,43 @@
 // pages/third/third.js
+
 import * as echarts from '../../ec-canvas/echarts';
+function getPieItemStyle(StartColor,EndColor)
+{
+  return{
+    normal: {
+      color: { // 完成的圆环的颜色
+        colorStops: [{
+          offset: 0,
+          color: StartColor // 0% 处的颜色
+        }, {
+          offset: 1,
+          color: EndColor// 100% 处的颜色
+        }]
+      },
+      label: {
+        show: false
+      },
+      labelLine: {
+        show: false
+      }
+    }
+  }
+
+}
+
 //圆图
 function getPieOption() {
   return {
+    title: {
+      text: '3000万',
+      x:'18%',
+      y: 'center',
+      textStyle: {
+        fontWeight: 'normal',
+        color: '#0580f2',
+        fontSize: '20'
+      }
+    },
     legend: {
       orient: 'vertical',
       x: 'right',
@@ -19,7 +54,7 @@ function getPieOption() {
         type: 'pie',
         radius: ['50%', '70%'],
         center: ['30%', '50%'],
-        avoidLabelOverlap: false,
+        avoidLabelOverlap: true,
         label: {
           normal: {
             show: false,
@@ -33,13 +68,18 @@ function getPieOption() {
             }
           }
         },
-
         data: [
-          { value: 335, name: '直接访问' },
-          { value: 310, name: '邮件营销' },
-          { value: 234, name: '联盟广告' },
-          { value: 135, name: '视频广告' },
-          { value: 1548, name: '搜索引擎' }
+          { value: 335, name: '本金 200000',
+            itemStyle: getPieItemStyle('#00cefc','#367bec')
+          },
+          { value: 310, name: '预期收益 10000',
+            itemStyle: getPieItemStyle('#F1A950', '#F1A950') 
+           },
+          { value: 234, name: '定投 5100', itemStyle: getPieItemStyle('#E26A1A', '#E26A1A')  },
+          
+          { value: 135, name: '资金缺口 200000',
+            itemStyle: getPieItemStyle('#FFFFFF', '#FFFFFF') 
+          }
         ]
       }
     ]
@@ -47,11 +87,9 @@ function getPieOption() {
 }
 //折线图设置
 function getLineOption(navDate, dailyReturn1, dailyReturn2){
-  console.log(navDate)
 
   return {
     backgroundColor: "#fff",
-    // color: ["#37A2DA", "#67E0E3", "#9FE6B8"],
     color: ['red',"#37A2DA"],
 
     tooltip: {
@@ -60,7 +98,6 @@ function getLineOption(navDate, dailyReturn1, dailyReturn2){
     legend: {
       x: 'center',
       y: 'bottom',
-      //data: ['A商品', 'B商品', 'C商品']
     },
     grid: {
       containLabel: true,
@@ -93,137 +130,30 @@ function getLineOption(navDate, dailyReturn1, dailyReturn2){
 
 }
 
-// function initChart(canvas, width, height) {
-//   const chart = echarts.init(canvas, null, {
-//     width: width,
-//     height: height
-//   });
-//   canvas.setChart(chart);
+var lineChart=null;
+var remoteUrl1 = getApp().globalData.remoteUrl1;  
+var remoteUrl2 = getApp().globalData.remoteUrl2;  
 
-//   var option = {
-//     // backgroundColor: "#ffffff",
-//     // color: ["#37A2DA", "#32C5E9", "#67E0E3", "#91F2DE", "#FFDB5C", "#FF9F7F"],
-//     // series: [{
-//     //   label: {
-//     //     normal: {
-//     //       fontSize: 14
-//     //     }
-//     //   },
-//     //   type: 'pie',
-//     //   center: ['50%', '50%'],
-//     //   radius: [0, '60%'],
-//     //   data: [{
-//     //     value: 55,
-//     //     name: '北京'
-//     //   }, {
-//     //     value: 20,
-//     //     name: '武汉'
-//     //   }, {
-//     //     value: 10,
-//     //     name: '杭州'
-//     //   }, {
-//     //     value: 20,
-//     //     name: '广州'
-//     //   }, {
-//     //     value: 38,
-//     //     name: '上海'
-//     //   },
-//     //   ],
-//     //   itemStyle: {
-//     //     emphasis: {
-//     //       shadowBlur: 10,
-//     //       shadowOffsetX: 0,
-//     //       shadowColor: 'rgba(0, 2, 2, 0.3)'
-//     //     }
-//     //   }
-//     // }]
-
-//     // tooltip: {
-//     //   trigger: 'item',
-      
-//     // },
-//     legend: {
-//       orient: 'vertical',
-//       x: 'right',
-//       y:'center',
-//       align:'left',
-//       selectedMode :false,
-//       // data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
-//     },
-//     series: [
-//       {
-//         name: '访问来源',
-//         type: 'pie',
-//         radius: ['50%', '70%'],
-//         center: ['30%', '50%'],
-//         avoidLabelOverlap: false,
-//         label: {
-//           normal: {
-//             show: false,
-//             position: 'center'
-//           },
-//           emphasis: {
-//             show: true,
-//             textStyle: {
-//               fontSize: '30',
-//               fontWeight: 'bold'
-//             }
-//           }
-//         },
-        
-//         data: [
-//           { value: 335, name: '直接访问' },
-//           { value: 310, name: '邮件营销' },
-//           { value: 234, name: '联盟广告' },
-//           { value: 135, name: '视频广告' },
-//           { value: 1548, name: '搜索引擎' }
-//         ]
-//       }
-//     ]
-//   };
-
-//   chart.setOption(option);
-//   return chart;
-// }
-var lineChart="";
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     zhId: "",
-    // ec: {
-    //   // onInit: initChart
-    //   onInit: function (canvas, width, height) {
-    //     const pieChart = echarts.init(canvas, null, {
-    //       width: width,
-    //       height: height
-    //     });
-    //     canvas.setChart(pieChart);
+    money: '10000.25',    //一次性投资金额
+    risk:'-0.05',         //最大承受风险
+    start_invest:'1000',  //定投金额
+    total_money:'10000',    //期望收益金额
 
-    //     // 将 barChart 绑定到 this，以供其他函数访问
-    //     this.pieChart = pieChart;
-    //     pieChart.setOption(getPieOption());
-
-    //     return pieChart;
-    //   }
-    // },
-    // ec_line: {
-    //   onInit: function (canvas, width, height) {
-    //     lineChart = echarts.init(canvas, null, {
-    //       width: width,
-    //       height: height
-    //     });
-    //     canvas.setChart(lineChart);
-
-    //     this.lineChart = lineChart;
-    //     lineChart.setOption(getLineOption("", "", ""));
-    //     //lineChart.setOption(getLineOption(navDate, dailyReturn1, dailyReturn2));
-
-    //     return lineChart;
-    //   }
-    // }
+    hiddenLoading: false,//页面加载loading true不显示
+    ec: {
+      lazyLoad:true
+    },
+    ec_line: {
+      lazyLoad: true
+    },
+    isLoaded: false,
+    isDisposed: false
   },
 
   /**
@@ -231,11 +161,17 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    // console.log(this.data.zhId);
+    //绑定本金图表
+   // this.ChartBarInit();
+
+    //隐藏loading
+    //this.setData({ hiddenLoading: true });
+
     // this.setData({zhId: "wwwww"});
-    // console.log(this.data.zhId);
-    //that.getDataZh();
-      //that.getCharData('116', '', '', 3);
+
+    //选取最优组合
+   
+    that.getDataZh();
   },
   /**
    * 获得组合id
@@ -243,13 +179,12 @@ Page({
   getDataZh:function(){
     var that = this;
     wx.request({
-      url: 'http://office.dsfof.com.cn:8048/get_parameter/?risk=-0.05&periods=24&total_money=10000&start_invest=1000&callback=',
+      url: remoteUrl2+'get_parameter/?risk=-0.05&periods=24&total_money=10000&start_invest=1000&callback=',
       method: 'GET',
       header: {
         'Content-Type': 'application/json'
       },
       success: function (res) {
-       
         if (res.data)
         {
           res.data = res.data.replace('({','{');
@@ -258,7 +193,15 @@ Page({
           //console.log(res.data)
           if(res.data.zhid!="")
           {
-            that.setData({ zhId: res.data.zhid});
+            that.setData({zhId: res.data.zhid});
+
+            //绑定本金图表
+            that.ChartBarInit();
+
+            //隐藏loading
+            //that.setData({ hiddenLoading: true });
+
+            //绑定组合折线图
             that.getCharData(res.data.zhid,'','',3);
           }
         }
@@ -285,17 +228,17 @@ Page({
   getCharData:function (zhid, sdate, edate, datetype){
     var that = this;
     wx.request({
-      url: 'https://221.dsfof.com.cn/GetZhsylxl.aspx?userid=&zhid=' + zhid + '&sdate=' + sdate + '&edate=' + edate + '&datetype=' + datetype+'&callback=',
+      url: remoteUrl1+'GetZhsylxl.aspx?userid=&zhid=' + zhid + '&sdate=' + sdate + '&edate=' + edate + '&datetype=' + datetype+'&callback=',
       method: 'GET',
       header: {
         'Content-Type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data);
+        //console.log(res.data);
         if(res.data)
         {
           var navDate=[];
-          var dailyReturn1=[];
+          var dailyReturn1 = [];
           var dailyReturn2 = [];
           for (var i = 0; i < res.data.length;i++)
           {
@@ -303,12 +246,10 @@ Page({
             dailyReturn1.push(res.data[i].dailyReturn1);
             dailyReturn2.push(res.data[i].dailyReturn2);
           }
-          lineChart.setOption(getLineOption(navDate, dailyReturn1, dailyReturn2));
-          console.log(that.data.ec_line.onInit) ;
-          // that.setData({
-          //   })
-
-
+          //将数据显示到图表上
+          that.ChartLineInit(navDate, dailyReturn1, dailyReturn2);
+          //隐藏loading
+          that.setData({ hiddenLoading: true });
         }
 
 
@@ -322,13 +263,62 @@ Page({
       }
     })
   },
+
+
+  // 点击按钮后初始化图表
+  ChartLineInit: function (arr1,arr2,arr3) {
+    this.ecComponent_line.init((canvas, width, height) => {
+      // 获取组件的 canvas、width、height 后的回调函数
+      // 在这里初始化图表
+      const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height
+      });
+
+      //setOption(chart);
+      chart.setOption(getLineOption(arr1, arr2, arr3));
+
+      // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+      this.chart = chart;
+
+      this.setData({
+        isLoaded: true,
+        isDisposed: false
+      });
+
+      // 注意这里一定要返回 chart 实例，否则会影响事件处理等
+      return chart;
+    });
+  },
+
+  ChartBarInit:function()
+  {
+    this.ecComponent_bar.init((canvas, width, height) => {
+      const pieChart = echarts.init(canvas, null, {
+        width: width,
+        height: height
+      });
+
+      pieChart.setOption(getPieOption());
+      // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+      //this.chart = chart;
+      this.setData({
+        isLoaded: true,
+        isDisposed: false
+      });
+
+      // 注意这里一定要返回 chart 实例，否则会影响事件处理等
+      return pieChart;
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    // 获取组件
+    this.ecComponent_line = this.selectComponent('#mychart-dom-line');
+    this.ecComponent_bar = this.selectComponent('#mychart-dom-bar');
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -373,8 +363,6 @@ Page({
       path: '/pages/third/third',
       success: function (res) {
         // 转发成功
-        // console.log("aaaa");
-        // console.log(res);
         wx.showToast({
           title: '分享成功',
           duration: 2000,
@@ -382,8 +370,6 @@ Page({
       },
       fail: function (res) {
         // 转发失败
-        // console.log("bbb");
-        // console.log(res);
         wx.showToast({
           title: '分享失败',
           duration:2000,

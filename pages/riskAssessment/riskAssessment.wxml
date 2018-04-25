@@ -1,0 +1,9 @@
+<!--pages/riskAssessment/riskAssessment.wxml-->
+<view class='one'>
+ <image src='../../image/temp14.png' style='width:100%; height:100%'></image>
+</view>
+<view class='two' bindtap='click_next'>
+ <image src='{{image[index]}}' style='width:100%; height:100%'></image>
+</view>
+
+<view class="three"  style="display:{{index>0?'':'none'}}"><button class="btn" bindtap='next_upper'>上一题</button></view>

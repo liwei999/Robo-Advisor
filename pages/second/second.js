@@ -102,7 +102,7 @@ Page({
     var that = this;
     if (e.currentTarget.dataset.time=="one")
     {
-      var time = that.data.timevalue >=6 ? that.data.timevalue-6: 0;
+      var time = that.data.timevalue >= 6 ? parseInt(that.data.timevalue)-6: 0;
       that.setData({ timevalue: time});      
     }
     else
@@ -119,7 +119,7 @@ Page({
   timeadd:function(e){
     var that = this;
     if (e.currentTarget.dataset.time == "one") {
-      that.setData({ timevalue: that.data.timevalue+6 });
+      that.setData({ timevalue: parseInt(that.data.timevalue) +6 });
     }
     else
     {

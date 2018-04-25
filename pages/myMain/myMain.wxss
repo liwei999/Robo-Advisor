@@ -1,5 +1,5 @@
 /* pages/myMain/myMain.wxss */
-page{background-color: #F0F6F9; display: flex; flex-direction: column;}
+page{background-color: #F0F6F9; display: flex; flex-direction: column; }
 .first{background-color: #ffffff; margin-top: 24rpx;}
 
 /**tab样式**/  
@@ -29,3 +29,19 @@ page{background-color: #F0F6F9; display: flex; flex-direction: column;}
 .first_tab{font-size: 28rpx;color: #19A7E9;display: flex;flex-direction: row; border-radius: 10rpx;border: 1rpx solid #19A7E9; margin: 0rpx 30rpx 30rpx 30rpx;}
 .first_tab view{padding:13rpx 0 13rpx 0; flex: 1; text-align: center;}
 .first_tab_on{background-color: #19A7E9;color: #fff;}
+
+.first_foot{border-top: 1rpx solid #D8E2E8;height: 119rpx;width: 100%;}
+.two{
+ height: 505rpx; padding: 23rpx 30rpx 32rpx 30rpx;
+}
+.two_class{
+  font-size: 26rpx; color: #888888; margin-bottom: 20rpx;
+}
+.three{margin-bottom: 122rpx;}
+.three1{height: 211rpx;margin-bottom: 10rpx;}
+.three2{height: 323rpx;margin-bottom: 10rpx;}
+.three3{height: 323rpx;}
+.four_foot{display: flex;flex-direction: row; height: 98rpx; width: 100%; position:fixed; bottom: 0rpx;}
+.four_foot view:first-child{display: flex;flex-direction:column; font-size: 24rpx;color: #7199AB;flex: 2;}
+.four_foot view:last-child{flex: 4; background-color: #19A7E9;color: #fff;text-align: center;line-height: 98rpx;}
+

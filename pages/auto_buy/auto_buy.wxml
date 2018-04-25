@@ -1,0 +1,27 @@
+<!--pages/auto_buy/auto_buy.wxml-->
+<view class="one">
+  <view class='one_item'>
+   <view>买入金额</view>
+   <view>200,000</view>
+  </view>
+  <view class='one_item'>
+   <view>每日买入</view>
+   <view>200,000</view>
+  </view>
+   <view class='one_three'>
+   <view>银行卡</view>
+   <view>
+    <view>中国银行(0000)</view>
+    <view>每笔限额</view>
+   </view>
+   <view class="three_reight">></view>
+  </view>
+</view>
+
+<view class='two'>
+  <image src='../../image/temp25.png' style='width:100%;'></image>
+</view>
+
+<view class='btn' bindtap='on_buy'>
+确定购买
+</view>

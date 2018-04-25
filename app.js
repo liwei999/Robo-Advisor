@@ -37,6 +37,8 @@ App({
   globalData: {
     userInfo: null,
     reload:'0',     //跳转到首页时是否重装载入数据
-    screenHeight:0  //屏幕高度
+    screenHeight:0,  //屏幕高度
+    remoteUrl1: 'https://221.dsfof.com.cn/webservice/',    //远程数据接口1
+    remoteUrl2: 'https://221.dsfof.com.cn/py/'    //远程数据接口2
   }
 })

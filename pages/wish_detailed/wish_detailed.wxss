@@ -1,0 +1,44 @@
+/* pages/wish_detailed/wish_detailed.wxss */
+page{background-color: #F0F6F9; display: flex; flex-direction: column;}
+.one{height: 300rpx;}
+.two{ padding: 41rpx 53rpx 0 53rpx;height: 641rpx;}
+.four_foot{display: flex;flex-direction: row; height: 98rpx; position: absolute;width: 100%; bottom: 0;font-size: 32rpx; background-color: #fff;}
+.four_foot view:first-child{display: flex;flex-direction:column;color: #7199AB;flex: 1;text-align: center;line-height: 98rpx;}
+.four_foot view:last-child{flex: 2; background-color: #19A7E9;color: #fff;text-align: center;line-height: 98rpx;}
+
+
+
+/**
+下边列表 开始
+*/
+
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.drawer_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  /* height: 300rpx; */
+}
+.close{
+  padding: 34rpx 0; text-align: center;font-size: 32rpx; border-top: 1px solid #E1E6E9;
+}
+
+/**
+下边列表 结束
+*/

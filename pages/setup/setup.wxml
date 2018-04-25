@@ -1,0 +1,44 @@
+<!--pages/setup/setup.wxml-->
+<view class="one">
+  <view class='one_icon'></view>
+  <view>
+      <view>18800001111</view>
+      <view style='color:#888888;font-size:24rpx;'>用户名</view>
+  </view>
+</view>
+
+<view class="item">
+<view>交易记录</view>
+<view>></view>
+</view>
+
+<view class="item">
+<view>登录密码</view>
+<view>></view>
+</view>
+
+<view class="item space">
+<view>交易密码</view>
+<view>></view>
+</view>
+
+<view class="item" bindtap='on_bank'>
+<view>银行卡</view>
+<view>></view>
+</view>
+<view class="item space" bindtap='on_risk'>
+<view>风险测评</view>
+<view>></view>
+</view>
+<view class="item">
+<view>关于我们</view>
+<view>></view>
+</view>
+<view class="item space">
+<view>意见反馈</view>
+<view>></view>
+</view>
+<view class="item">
+<view>退出登录</view>
+<view>></view>
+</view>

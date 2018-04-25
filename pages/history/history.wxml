@@ -1,0 +1,19 @@
+<!--pages/history/history.wxml-->
+<view class="view one">
+  <image src="../../image/temp8.png" style='width:100%; height:100%'></image>
+</view>
+<view class="view two">
+  <image src="../../image/temp9.png" style='width:100%; height:100%'></image>
+</view>
+<view class="view three">
+  <image src="../../image/temp10.png" style='width:100%; height:100%'></image>
+</view>
+<view class="view four">
+  <image src="../../image/temp11.png" style='width:100%; height:100%'></image>
+</view>
+<view class="view five">
+  <image src="../../image/temp12.png" style='width:100%; height:100%'></image>
+</view>
+<view class="view six">
+  <image src="../../image/temp13.png" style='width:100%; height:100%'></image>
+</view>

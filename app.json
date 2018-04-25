@@ -1,5 +1,7 @@
 {
   "pages": [
+        "pages/line/index",
+        "pages/bar/index",
     "pages/first/first",
     "pages/index/index",
     "pages/second/second",
@@ -8,12 +10,47 @@
     "pages/bankcard/bankcard",
     "pages/certification/certification",
     "pages/bindingBankCard/bindingBankCard",
-    "pages/myMain/myMain"
+    "pages/myMain/myMain",
+    "pages/history/history",
+    "pages/riskAssessment/riskAssessment",
+    "pages/riskType/riskType",
+    "pages/wish_list/wish_list",
+    "pages/interest_circle/interest_circle",
+    "pages/setup/setup",
+    "pages/register/register",
+    "pages/login/login",
+    "pages/wish_detailed/wish_detailed",
+    "pages/auto_buy/auto_buy"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "德圣智投",
+    "navigationBarTitleText": "网信智投",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#c2c2c2",
+    "selectedColor": "#2f7ccb",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "selectedIconPath": "image/tempselect.png",
+        "iconPath": "image/temp.png",
+        "pagePath": "pages/wish_list/wish_list",
+        "text": "心愿单"
+      },
+      {
+        "selectedIconPath": "image/tempselect.png",
+        "iconPath": "image/temp.png",
+        "pagePath": "pages/interest_circle/interest_circle",
+        "text": "兴趣圈"
+      },
+      {
+        "selectedIconPath": "image/tempselect.png",
+        "iconPath": "image/temp.png",
+        "pagePath": "pages/setup/setup",
+        "text": "设置"
+      }
+    ]
   }
 }

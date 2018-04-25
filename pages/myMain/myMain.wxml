@@ -27,5 +27,26 @@
     <view class='{{item_bar[2]?"first_tab_on":""}}' bindtap='on_first_tab' data-index='2'>近一年</view>
     <view class='{{item_bar[3]?"first_tab_on":""}}' bindtap='on_first_tab' data-index='3'>成立以来</view>
   </view>
-  
+
+  <view class="first_foot">
+   <image src='../../image/temp1.png' style="width:100%; height:100%;"></image>
+  </view>
+</view>
+
+<view class='first two'>
+ <view class='two_class'>组合配置</view>
+ <image src='../../image/temp2.png' style='width:690rpx; height:460rpx;'></image>
+</view>
+
+<view class='first three'>
+  <view class="three1"><image src="../../image/temp3.png" style='height:100%;width:100%;'></image></view>
+  <view class="three2"><image src="../../image/temp4.png" style='height:100%;width:100%;'></image></view>
+  <view class="three3"><image src="../../image/temp5.png" style='height:100%;width:100%;'></image></view>
+</view>
+
+<view class='first four_foot'>
+ <view bindtap='click_history'>
+ <image src='../../image/temp7.png' style="width:100%; height:100%;"></image>
+ </view>
+ <view bindtap='click_buy'>立即购买</view>
 </view>

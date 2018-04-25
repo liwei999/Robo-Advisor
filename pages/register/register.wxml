@@ -1,0 +1,33 @@
+<!--pages/register/register.wxml-->
+<view class='view'>
+<label for='username'>用户名</label>
+<input id="username" type='text'></input>
+</view>
+
+<view class='view'>
+<label for='password'>密码</label>
+<input id="password" type='text' password='true'></input>
+</view>
+
+<view class='view'>
+<label for='repassword'>确认密码</label>
+<input id="repassword" type='text' password='true'></input>
+</view>
+
+<view class='view'>
+<label for='phone'>手机号</label>
+<view class='phone'>
+<input id="phone" type='text' ></input>
+<button>获取验证码</button>
+</view>
+</view>
+
+
+<view class='view'>
+<label for='VerificationCode'>验证码</label>
+<input id="VerificationCode" type='text'></input>
+</view>
+
+<view class='view view_btn'>
+<button bindtap='on_register'>注册</button>
+</view>

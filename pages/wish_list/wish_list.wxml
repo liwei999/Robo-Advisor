@@ -1,0 +1,11 @@
+<!--pages/wish_list/wish_list.wxml-->
+<view class='one'>
+  <image src="../../image/temp18.png" style='width:100%; height:100%'></image>
+</view>
+<view class="two" bindtap='on_detailed'>
+  <image src="../../image/temp19.png" style='width:100%; height:100%'></image>
+</view>
+
+<view class='three' bindtap='on_new_wish'>
+  +新的心愿
+</view>

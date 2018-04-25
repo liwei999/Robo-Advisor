@@ -1,0 +1,10 @@
+/* pages/riskType/riskType.wxss */
+page{background-color: #F0F6F9; display: flex; flex-direction: column;}
+.one{height: 600rpx;}
+.two{height: 98rpx;bottom: 0px; font-size: 32rpx;display: flex;flex-direction:row;position: absolute;}
+.two:last-child{text-align: center;display: flex; }
+.two:first-child{text-align: center;display: flex; }
+
+.four_foot{display: flex;flex-direction: row; height: 98rpx; position: absolute;width: 100%; bottom: 0;font-size: 32rpx; background-color: #fff;}
+.four_foot view:first-child{display: flex;flex-direction:column;color: #7199AB;flex: 1;text-align: center;line-height: 98rpx;}
+.four_foot view:last-child{flex: 1; background-color: #19A7E9;color: #fff;text-align: center;line-height: 98rpx;}

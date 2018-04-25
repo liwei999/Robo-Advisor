@@ -1,0 +1,6 @@
+/* pages/riskAssessment/riskAssessment.wxss */
+page{background-color: #F0F6F9; display: flex; flex-direction: column;}
+.one{ height: 300rpx;}
+.two{height: 600rpx; margin-top: 24rpx;}
+.three{ position:  absolute; bottom: 0rpx; width: 100%;}
+.btn{background-color: #19A7E9;color: #FFFFFF;font-size: 32rpx;} 

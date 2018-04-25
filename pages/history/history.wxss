@@ -1,0 +1,18 @@
+/* pages/history/history.wxss */
+.view{margin-bottom: 10rpx;}
+.one{ height: 231rpx;}
+.two{
+  height: 210rpx;
+}
+.three{
+  height: 435rpx;
+}
+.four{
+  height: 323rpx;
+}
+.five{
+  height: 211rpx;
+}
+.six{
+  height: 211rpx;
+}
