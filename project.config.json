@@ -1,14 +1,14 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
-		"postcss": true,
-		"minified": true,
+		"postcss": false,
+		"minified": false,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.94",
+	"libVersion": "1.9.91",
 	"appid": "wxd77250297c6d7afa",
 	"projectname": "%E5%BE%B7%E5%9C%A3%E6%99%BA%E6%8A%95",
 	"isGameTourist": false,
@@ -26,11 +26,10 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -72,6 +71,18 @@
 					"id": -1,
 					"name": "我的易游宝",
 					"pathName": "pages/myMain/myMain",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "line",
+					"pathName": "pages/line/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "bar",
+					"pathName": "pages/bar/index",
 					"query": ""
 				}
 			]
