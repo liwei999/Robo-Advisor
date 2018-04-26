@@ -1,16 +1,16 @@
 <!--pages/login/login.wxml-->
 <view class='view'>
 <label for='username'>账号</label>
-<input id="username" type='text'></input>
+<input id="username" type='text' value="{{userName}}" bindinput="userNameInput"></input>
 </view>
 
 <view class='view'>
 <label for='password'>密码</label>
-<input id="password" type='text' password='true'></input>
+<input id="password" type='text' password='true' value="{{passWd}}" bindinput="passWdInput"></input>
 </view>
 
 <view class='view view_btn'>
-<button bindtap='on_login'>登录</button>
+<button bindtap='loginBtnClick'>登录</button>
 <button bindtap='on_register'>注册</button>
 </view>
 

@@ -1,6 +1,6 @@
 /* pages/third/third.wxss */
 page{background-color: #F0F6F9; display: flex; flex-direction: column;}
-.count{ margin: 40rpx 40rpx 24rpx 40rpx;  background-color: #ffffff; border-radius: 20rpx; padding: 0px 24px;}
+.count{ margin: 40rpx 40rpx 0rpx 40rpx;  background-color: #ffffff; border-radius: 20rpx; padding: 0px 24px;}
 
 .second{ margin-top: 24rpx; }
 

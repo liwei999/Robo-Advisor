@@ -15,6 +15,30 @@ Page({
   
   },
 
+  unsubscribeEvent: function (e) {
+    var _this = this;
+    console.log(e);
+    var idx = e.currentTarget.dataset.idx;
+    wx.showModal({
+      title: '提示',
+      content: '确定退出当前账号登录？',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+
+          //设置重新载入标记
+          var app = getApp();
+          getApp().globalData.reload = '1'
+
+          wx.redirectTo({
+            url: '../login/login',
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

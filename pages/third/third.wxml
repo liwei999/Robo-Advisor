@@ -1,8 +1,9 @@
 <!--pages/third/third.wxml-->
+
 <loading hidden="{{hiddenLoading}}">数据加载中...</loading>
 <view class="count">
  <view class='count_title'>期望收益</view>
- <view class="first_char">
+ <view class="first_char" hidden="{{hideBarChart}}">
  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
  <!-- <image src='../../image/t1.png'></image> -->
  </view>
@@ -15,7 +16,7 @@
 <view class="count third">
 <view class='count_title'>历史走势</view>
 
- <view class="third_char">
+ <view class="third_char" hidden="{{hideLineChart}}">
    <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec_line }}"></ec-canvas>  
    <!-- <image src='../../image/t2.png'></image>  -->
  </view>
@@ -24,17 +25,10 @@
 <view class="count second">
 <view class='count_title'>风险概率</view>
  <view class='first_table'>
- <view class='row'> 
- <view>收益区间在1.5%-3.1%</view>
- <view class="font_red">90%概率达成</view>
- </view>
- <view class='row'>
- <view>最大亏损为-1.9%</view>
- <view class="font_red">0.5%概率出现</view>
- </view>
- <view class='row'>
- <view>其他收益区间</view>
- <view class="font_red">9.5%概率出现</view>
+
+ <view class='row' wx:for="{{ZhRiskList}}" wx:for-index="index" wx:for-item="item" wx:key="title"> 
+ <view>{{item.f_syl}}</view>
+ <view class="font_red">{{item.title}}</view>
  </view>
  </view>
   <view class='remarks'>
@@ -45,7 +39,7 @@
 
 
 <!-- <button bindtap='onclick'>跳转绑卡</button> -->
-<view class='four'> <button bindtap='onclickbuy' data-status="1">立即购买</button> <button bindtap='onclickmain' >专属心愿计划</button></view>
+<view class='four' id="bt_buy"> <button bindtap='onclickbuy' data-status="1">立即购买</button> <button bindtap='onclickmain' >专属心愿计划</button></view>
 
 
 <view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
