@@ -63,7 +63,7 @@
 <view class='first three'>
 
 
- <view class="three1" wx:for="{{fund_data.type}}" wx:for-index="type_index" wx:for-item="itemName" style='background-color:{{fund_data.type.length<=7?item_color[type_index+2]:item_color[9]}}'>
+ <view class="three1" wx:for="{{fund_data.type}}" wx:for-index="type_index" wx:for-item="itemName" style='background-color:{{fund_data.type.length-1!=type_index?item_color[type_index]:item_color[9]}}'>
     <view class="three_type">{{itemName}}</view>
     <view class="three_item" wx:for="{{fund_data.fund}}" wx:for-item="funditem"  wx:if="{{funditem.type==itemName}}">
     
