@@ -9,6 +9,10 @@ Page({
     riskvalue:6,//最大风险承受
     typeLeft:"",//有无投入资金左
     typeReight: "havemoneyactionr",//有无投入资金右
+    desireInp: "愿望名默认为空",      //愿望名称
+    desireMoney: "10000",   //愿望期望金额
+    start_invest:"5000" //起始投入金额
+
   },
 
   /**
@@ -19,7 +23,12 @@ Page({
     console.log(options.time);
     if (options.time)
     {
-    that.setData({timevalue:options.time});
+      //接收传入的参数
+      that.setData({
+        timevalue:options.time,
+        desireInp: options.desireInp,
+        desireMoney: options.desireMoney
+      });
     }
     else
     {
@@ -69,7 +78,18 @@ Page({
   onReachBottom: function () {
   
   },
-
+  //手动输入起始金额
+  moneyInput: function (e) {
+    this.setData({
+      start_invest: e.detail.value
+    })
+  },
+  //手动输入最大风险承受
+  riskInput: function (e) {
+    this.setData({
+      riskvalue: e.detail.value
+    })
+  },
   // /**
   //  * 用户点击右上角分享
   //  */
@@ -78,8 +98,14 @@ Page({
   // }
   //,
   next_step:function(){
+    var gourl = '../third/third?desireInp=' + this.data.desireInp
+    gourl = gourl + '&desireMoney=' + this.data.desireMoney   //愿望金额
+    gourl = gourl + '&timevalue=' + this.data.timevalue   //实现愿望期限
+    gourl = gourl + '&riskvalue=' + (-parseFloat(this.data.riskvalue)/100)   //最大风险承受
+    gourl = gourl + '&start_invest=' + this.data.start_invest   //起始投入金额
+    console.log(gourl)
     wx.navigateTo({
-      url: '../third/third',
+      url: gourl,
     })
   },
   /**

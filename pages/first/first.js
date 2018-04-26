@@ -93,7 +93,7 @@ Page({
     }
 
     wx.navigateTo({
-      url: '../second/second?title=' + this.data.desireInp + "&time=" + this.data.desiretime + "&money=" + this.data.desireMoney,
+      url: '../second/second?desireInp=' + this.data.desireInp + "&time=" + this.data.desiretime + "&desireMoney=" + this.data.desireMoney,
     })
   },
   /**

@@ -12,7 +12,7 @@
 <view class="havemoney">
  <view class="havemoneyleft {{typeLeft}}" bindtap='bindstyle' data-type='l'>
  <view class='havetitle'>可投入资金</view>
- <view class='btnmoney'><input placeholder='点击输入金额' placeholder-class='inpmoney'></input></view>
+ <view class='btnmoney'><input bindinput="moneyInput" placeholder='点击输入金额' placeholder-class='inpmoney'></input></view>
  </view>
  <view class="havemoneyright {{typeReight}}" bindtap='bindstyle' data-type='r'>
  <view >暂无金额</view>
@@ -23,7 +23,7 @@
 <view class='mbfont mbfont_margin_top'>最大风险承受</view>
 <view class="inpview">
   <view class='inpleft' bindtap='timereduce' data-time='two'><image src='../../image/minus.png' class='inpimage'></image></view>
-  <view class="inpcount"><input placeholder-class='inpfont' placeholder='6' class='inpclass' value='{{riskvalue}}'></input><view>%</view></view>
+  <view class="inpcount"><input placeholder-class='inpfont' placeholder='6' class='inpclass' value='{{riskvalue}}' bindinput="riskInput"></input><view>%</view></view>
   <view class='inpright' bindtap='timeadd' data-time='two'><image src='../../image/Plus.png' class='inpimage'></image></view>
 </view>
 

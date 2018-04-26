@@ -3,22 +3,25 @@
 import * as echarts from '../../ec-canvas/echarts';
 function getPieItemStyle(StartColor,EndColor)
 {
+
   return{
     normal: {
-      color: { // 完成的圆环的颜色
-        colorStops: [{
-          offset: 0,
-          color: StartColor // 0% 处的颜色
-        }, {
-          offset: 1,
-          color: EndColor// 100% 处的颜色
-        }]
-      },
+      color: StartColor,// 100% 处的颜色  安卓手机目前对渐变颜色支持不好
+      // color: { // 完成的圆环的颜色
+      //   //color: StartColor // 0% 处的颜色
+      //   colorStops: [{
+      //     offset: 0,
+      //     color: StartColor // 0% 处的颜色
+      //   }, {
+      //     offset: 1,
+      //     color: EndColor// 100% 处的颜色
+      //   }]
+      // },
       label: {
-        show: false
+        show: true
       },
       labelLine: {
-        show: false
+        show: true
       }
     }
   }
@@ -26,10 +29,10 @@ function getPieItemStyle(StartColor,EndColor)
 }
 
 //圆图
-function getPieOption() {
+function getPieOption(titleTxt,ChartData) {
   return {
     title: {
-      text: '3000万',
+      text: titleTxt,
       x:'18%',
       y: 'center',
       textStyle: {
@@ -68,19 +71,7 @@ function getPieOption() {
             }
           }
         },
-        data: [
-          { value: 335, name: '本金 200000',
-            itemStyle: getPieItemStyle('#00cefc','#367bec')
-          },
-          { value: 310, name: '预期收益 10000',
-            itemStyle: getPieItemStyle('#F1A950', '#F1A950') 
-           },
-          { value: 234, name: '定投 5100', itemStyle: getPieItemStyle('#E26A1A', '#E26A1A')  },
-          
-          { value: 135, name: '资金缺口 200000',
-            itemStyle: getPieItemStyle('#FFFFFF', '#FFFFFF') 
-          }
-        ]
+        data: ChartData
       }
     ]
   };
@@ -139,13 +130,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    zhId: "",
-    money: '10000.25',    //一次性投资金额
-    risk:'-0.05',         //最大承受风险
-    start_invest:'1000',  //定投金额
-    total_money:'10000',    //期望收益金额
-
+    isLogin:1,    //是否登录
+    hideLineChart:false, //是否隐藏折线图
+    hideBarChart:false, //是否隐藏bar图
+    zhId: "",   //组合id
+    desireInp:'',  //愿望名默认为空
+    risk:'-0.09',         //最大承受风险
+    periods:'24',       //投资时间(月份)
+    start_invest: '1000',  //初始金额
+    total_money:'10000',    //期望完成收益金额(本金+收益)
+    ZhRiskList: [],  //组合风险收益
     hiddenLoading: false,//页面加载loading true不显示
+    BarData: [],  //Bar图数据
     ec: {
       lazyLoad:true
     },
@@ -161,25 +157,36 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    //绑定本金图表
-   // this.ChartBarInit();
+
+    //接收传入的参数
+    that.setData({
+      risk: options.riskvalue,     //最大承受风险
+      desireInp: options.desireInp,   //愿望名称
+      start_invest: options.start_invest,  //起始投入金额
+      total_money: options.desireMoney, //期望金额
+      periods: options.timevalue    //投资月份
+    });
+    
+    console.log(this.data.total_money)
 
     //隐藏loading
     //this.setData({ hiddenLoading: true });
-
-    // this.setData({zhId: "wwwww"});
+    //设置组合风险收益
+    this.setData({
+      ZhRiskList: []
+    });
 
     //选取最优组合
-   
-    that.getDataZh();
+    that.getDataZh(this.data.risk, this.data.periods, this.data.total_money, this.data.start_invest);
   },
   /**
    * 获得组合id
    */
-  getDataZh:function(){
+  getDataZh: function (risk, periods,total_money, start_invest){
     var that = this;
+    var parm = 'GetBestZh/?risk=' + risk + '&periods='+periods+'&total_money='+total_money+'&start_invest='+ start_invest+'&callback='
     wx.request({
-      url: remoteUrl2+'get_parameter/?risk=-0.05&periods=24&total_money=10000&start_invest=1000&callback=',
+      url: remoteUrl2 + parm,
       method: 'GET',
       header: {
         'Content-Type': 'application/json'
@@ -194,15 +201,64 @@ Page({
           if(res.data.zhid!="")
           {
             that.setData({zhId: res.data.zhid});
+            var per_money = parseFloat(res.data.per_money);   //定投金额
+            var qk = parseFloat(res.data.qk); //资金缺口
+            var yq = parseFloat(res.data.yq); //预期收益
+            var dtnum = parseFloat(res.data.dtnum);   //定投金额
+            var dtmoney = (per_money * dtnum).toFixed(2)
+            //资金缺口=期望金额-资金缺口-初始投资金额
+            //yq = (parseFloat(that.data.total_money) - qk - parseFloat(that.data.start_invest)).toFixed(2)
+      //       {
+      //         value: 335, name: '本金 200000',
+      //           itemStyle: getPieItemStyle('#00cefc', '#00cefc')
+      //       },
+      // {
+      //   value: 310, name: '预期收益 10000',
+      //   itemStyle: getPieItemStyle('#F1A950', '#F1A950')
+      // },
+      // { value: 234, name: '定投 5100', itemStyle: getPieItemStyle('#E26A1A', '#E26A1A') },
+
+      // {
+      //   value: 135, name: '资金缺口 200000',
+      //   itemStyle: getPieItemStyle('#FFFFFF', '#FFFFFF')
+      // }
+            //本金
+            var ar=[];
+            var ar1 = {
+              value: that.data.start_invest, name: '本金 ' + that.data.start_invest,itemStyle: getPieItemStyle('#00cefc', '#00cefc')
+              };
+            var ar2 = {
+              value: yq, name: '预期收益 ' + yq, itemStyle: getPieItemStyle('#F1A950', '#F1A950')
+            };
+            var ar3 = {
+              value: dtmoney, name: '定投 ' + dtmoney, itemStyle: getPieItemStyle('#E26A1A', '#E26A1A')
+            };
+            var ar4 = {
+              value: qk, name: '资金缺口 ' + qk, itemStyle: getPieItemStyle('#FFFFFF', '#FFFFFF')
+            };
+            //如果定投金额为0，则不显示定投图例
+            if (per_money=='0.00')
+              ar=[ar1,ar2,ar4]
+            else
+              ar = [ar1, ar2, ar3, ar4]
+
+            //预期收益
+            //定投金额
+            //资金缺口
+            //定投月数
+          
 
             //绑定本金图表
-            that.ChartBarInit();
+            that.ChartBarInit(that.data.total_money, ar);
 
             //隐藏loading
             //that.setData({ hiddenLoading: true });
 
             //绑定组合折线图
             that.getCharData(res.data.zhid,'','',3);
+
+            //绑定组合风险收益数据
+            that.GetRiskData(res.data.zhid, that.data.periods)
           }
         }
         else
@@ -291,7 +347,7 @@ Page({
     });
   },
 
-  ChartBarInit:function()
+  ChartBarInit: function (titleTxt,ChartData)
   {
     this.ecComponent_bar.init((canvas, width, height) => {
       const pieChart = echarts.init(canvas, null, {
@@ -299,7 +355,7 @@ Page({
         height: height
       });
 
-      pieChart.setOption(getPieOption());
+      pieChart.setOption(getPieOption(titleTxt,ChartData));
       // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
       //this.chart = chart;
       this.setData({
@@ -383,10 +439,21 @@ Page({
       url: '../bankcard/bankcard',
     })
   },
+  // 获取容器高度，使页面滚动到容器底部  
+  pageScrollToBottom: function () {
+    wx.createSelectorQuery().select('#bt_buy').boundingClientRect(function (rect) {
+      // 使页面滚动到底部  
+      wx.pageScrollTo({
+        scrollTop: rect.bottom
+      })
+    }).exec()
+  },  
   /**
    * 立即购买
    */
   onclickbuy:function(e){
+
+
     if (this.data.isLogin)
     {
       this.setModalStatus(e)
@@ -406,7 +473,8 @@ Page({
         }
       })
     }
-    this.setData({ isLogin: !this.data.isLogin});
+    //this.setData({ hideLineChart: !this.data.hideLineChart });
+    //this.setData({ isLogin: !this.data.isLogin});
   },
   /**
    * 显示隐藏菜单
@@ -420,16 +488,21 @@ Page({
     })
     this.animation = animation
     animation.translateY(300).step()
+
     this.setData({
       animationData: animation.export()
     })
+
     if (e.currentTarget.dataset.status == 1) {
       this.setData(
         {
-          showModalStatus: true
+          showModalStatus: true,
+          hideLineChart:true,
+          hideBarChart:true
         }
       );
     }
+
     setTimeout(function () {
       animation.translateY(0).step()
       this.setData({
@@ -438,9 +511,13 @@ Page({
       if (e.currentTarget.dataset.status == 0) {
         this.setData(
           {
-            showModalStatus: false
+            showModalStatus: false,
+            hideLineChart: false,
+            hideBarChart:false
           }
         );
+
+        this.pageScrollToBottom();
       }
     }.bind(this), 200)
   }, 
@@ -456,5 +533,45 @@ Page({
     wx.navigateTo({
       url: '../myMain/myMain',
     })
+  },
+  /**
+ * 获得组合风险收益数据
+ */
+  GetRiskData: function (zhid,months) {
+    var that = this;
+    that.setData({ hiddenLoading: false });
+    that.setData({ ZhRiskList: [] });
+    wx.request({
+      url: remoteUrl2 + 'GetZhRisk/?zhid='+zhid+'&months='+months+'&nd=' + parseInt(1000 * Math.random()),
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        if (res.data) {
+          console.log(res.data)
+          var tempdata = res.data;
+          if (tempdata.length > 0) {
+            that.setData({ 
+              ZhRiskList: tempdata, 
+              hiddenLoading: true 
+            });
+          }
+        }
+      }
+      ,
+      fail: function (res) {
+        wx.showToast({
+          title: '网络异常，下拉刷新',
+          icon: 'none',
+          duration: 2000
+        })
+      },
+      complete: function (res) {
+        //隐藏loading
+        that.setData({ hiddenLoading: true });
+      }
+    })
   }
+
 })
