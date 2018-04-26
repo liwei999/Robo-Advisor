@@ -158,14 +158,17 @@ Page({
   onLoad: function (options) {
     var that = this;
 
-    //接收传入的参数
-    that.setData({
-      risk: options.riskvalue,     //最大承受风险
-      desireInp: options.desireInp,   //愿望名称
-      start_invest: options.start_invest,  //起始投入金额
-      total_money: options.desireMoney, //期望金额
-      periods: options.timevalue    //投资月份
-    });
+    if (options.riskvalue)
+    {
+      //接收传入的参数
+      that.setData({
+        risk: options.riskvalue,     //最大承受风险
+        desireInp: options.desireInp,   //愿望名称
+        start_invest: options.start_invest,  //起始投入金额
+        total_money: options.desireMoney, //期望金额
+        periods: options.timevalue    //投资月份
+      });
+    }
     
     console.log(this.data.total_money)
 
