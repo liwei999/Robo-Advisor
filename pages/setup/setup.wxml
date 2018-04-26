@@ -38,7 +38,7 @@
 <view>意见反馈</view>
 <view>></view>
 </view>
-<view class="item">
+<view class="item" bindtap="unsubscribeEvent">
 <view>退出登录</view>
 <view>></view>
 </view>
