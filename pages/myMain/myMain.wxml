@@ -6,18 +6,25 @@
     <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">月投收益</view>
   </view>
    
-  <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange">
     <!-- 收益表现 -->
-    <swiper-item >
-      收益表现
+    <swiper-item>
+    <view style='width:100%; height:100%;display:{{hidden_arr[0]?"block":"none"}};'>
+       <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec_line }}" style='width:{{width}}' ></ec-canvas>  
+    </view>
     </swiper-item>
     <!-- 回撤走势 -->
     <swiper-item>
-      回撤走势
+    <view style='width:100%; height:100%;display:{{hidden_arr[1]?"block":"none"}};'>
+    回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势
+    </view>
     </swiper-item>
     <!-- 月投收益 -->
     <swiper-item>
-      月投收益
+    <view style='width:100%; height:100%;display:{{hidden_arr[2]?"block":"none"}};'>
+    月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益
+    </view>
+      
     </swiper-item>
   </swiper>
 
@@ -29,7 +36,22 @@
   </view>
 
   <view class="first_foot">
-   <image src='../../image/temp1.png' style="width:100%; height:100%;"></image>
+    <view>
+     <view>年化收益</view>
+     <view class="orange">5.18%</view>
+    </view>
+    <view>
+     <view>年化波动率</view>
+     <view class="blank">2.19%</view>
+    </view>
+    <view>
+     <view>最大回撤</view>
+     <view class="green">-2.92%</view>
+    </view>
+    <view>
+     <view style='border-right:0'>夏普比率</view>
+     <view style='border-right:0' class="blank">--</view>
+    </view>
   </view>
 </view>
 
@@ -39,9 +61,32 @@
 </view>
 
 <view class='first three'>
-  <view class="three1"><image src="../../image/temp3.png" style='height:100%;width:100%;'></image></view>
-  <view class="three2"><image src="../../image/temp4.png" style='height:100%;width:100%;'></image></view>
-  <view class="three3"><image src="../../image/temp5.png" style='height:100%;width:100%;'></image></view>
+
+
+ <view class="three1" wx:for="{{fund_data.type}}" wx:for-index="type_index" wx:for-item="itemName" style='background-color:{{fund_data.type.length<=7?item_color[type_index+2]:item_color[9]}}'>
+    <view class="three_type">{{itemName}}</view>
+    <view class="three_item" wx:for="{{fund_data.fund}}" wx:for-item="funditem"  wx:if="{{funditem.type==itemName}}">
+    
+      <view>
+        <view class='three_name'>{{funditem.jjmc}}</view>
+        <view class='three_jysdm'>{{funditem.jjdm}}</view>
+      </view>
+      <view class='three_bl'>{{funditem.bl}}%</view>
+    
+    </view>
+  </view>
+
+
+  <!-- <view class="three1">
+    <view class="three_type">货币型</view>
+    <view class="three_item">
+      <view>
+        <view class='three_name'>先锋现金宝货币</view>
+        <view class='three_jysdm'>003585</view>
+      </view>
+      <view class='three_bl'>81.89%</view>
+    </view>
+  </view> -->
 </view>
 
 <view class='first four_foot'>

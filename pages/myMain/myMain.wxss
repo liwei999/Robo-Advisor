@@ -30,7 +30,11 @@ page{background-color: #F0F6F9; display: flex; flex-direction: column; }
 .first_tab view{padding:13rpx 0 13rpx 0; flex: 1; text-align: center;}
 .first_tab_on{background-color: #19A7E9;color: #fff;}
 
-.first_foot{border-top: 1rpx solid #D8E2E8;height: 119rpx;width: 100%;}
+.first_foot{border-top: 1rpx solid #D8E2E8;width: 100%; display: flex; flex-direction: row; padding: 28rpx 0;}
+.first_foot view{flex: 1;}
+
+.first_foot view view:first-child{font-size: 26rpx; color: #A49997; padding-left: 30rpx; border-right: 1rpx solid #D9D9D9;}
+.first_foot view view:last-child{font-size: 30rpx; color: #A49997; padding-left: 30rpx; border-right: 1rpx solid #D9D9D9;}
 .two{
  height: 505rpx; padding: 23rpx 30rpx 32rpx 30rpx;
 }
@@ -38,10 +42,20 @@ page{background-color: #F0F6F9; display: flex; flex-direction: column; }
   font-size: 26rpx; color: #888888; margin-bottom: 20rpx;
 }
 .three{margin-bottom: 122rpx;}
-.three1{height: 211rpx;margin-bottom: 10rpx;}
-.three2{height: 323rpx;margin-bottom: 10rpx;}
-.three3{height: 323rpx;}
+.three1{margin-bottom: 10rpx;display: flex;flex-direction: column;background-color: #0e98d8; padding-bottom: 24rpx;}
+.three1:last-child{margin-bottom: 0;}
+.three_item{display: flex;flex-direction: row; justify-content:space-between; background-color: #fff;margin: 0 40rpx 2rpx 40rpx;}
+.three_name{color:#373737;font-size: 32rpx;padding-top: 22rpx; padding-left: 19rpx;}
+.three_jysdm{color: #FF502E;font-size: 24rpx; padding-bottom: 21rpx;padding-top: 5rpx; padding-left: 19rpx;}
+.three_type{text-align: center; padding:23rpx 0;font-size: 32rpx;color:#fff;}
+.three_bl{width: 140rpx;height: 60rpx;border-radius: 30rpx; border:1rpx solid #19A7E9; color:#19A7E9; margin-right: 20rpx; margin-top: 25rpx;font-size: 32rpx;line-height: 60rpx; text-align: center;}
+
+
 .four_foot{display: flex;flex-direction: row; height: 98rpx; width: 100%; position:fixed; bottom: 0rpx;}
 .four_foot view:first-child{display: flex;flex-direction:column; font-size: 24rpx;color: #7199AB;flex: 2;}
 .four_foot view:last-child{flex: 4; background-color: #19A7E9;color: #fff;text-align: center;line-height: 98rpx;}
+
+.orange{color:#FF502E!important;}
+.green{color:#35C18B!important;}
+.blank{color: #373737!important;}
 
