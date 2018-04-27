@@ -348,16 +348,26 @@ Page({
           var bardata = []
           var item={};
           var item_color=that.data.item_color;
+          var risk = res.data.risk[0];
           for (var i = 0; i < res.data.type.length; i++) 
           {
             var ar = res.data.type[i];
             item = { value: ar.bl, name: ar.f_type, itemStyle: fun_Chart.getPieItemStyle(item_color[i], item_color[i])}
             bardata.push(item);
           }
-          console.log(bardata)
+          //console.log(bardata)
+          console.log(res.data.risk)
+          //设置组合风险收益值和
           that.setData({
-            fund_data: res.data
+            fund_data: res.data,
+            nhsyl: risk.nhsyl,
+            nhbdl: risk.nhbdl,
+            f_hc: risk.f_hc,
+            f_xp: risk.f_xp
           });
+
+          
+
 
           //初始化组合配置图表
           that.ChartBarInit('', bardata)
