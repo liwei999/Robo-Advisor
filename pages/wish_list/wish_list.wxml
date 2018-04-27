@@ -2,8 +2,23 @@
 <view class='one'>
   <image src="../../image/temp18.png" style='width:100%; height:100%'></image>
 </view>
-<view class="two" bindtap='on_detailed'>
-  <image src="../../image/temp19.png" style='width:100%; height:100%'></image>
+<view class="two" bindtap='on_detailed' wx:for="{{target}}" wx:for-index="index" wx:for-item="item">
+  <view class='first'>
+    <view class="first_image"></view>
+     <view class="first_content">
+       <view class='first_content_name'>{{item.name}}</view>
+       <view class='first_content_money'>已完成金额(元)	{{item.complete}}/{{item.allmoney}}</view>
+       <view class='first_content_money'>
+           <view class='first_bg' style='margin-left:-76rpx;left:{{( item.complete/item.allmoney)*100}}%'><image src='../../image/bg.png' style='width:100%;height:100%;' ></image><text>{{(item.complete/item.allmoney)*100}}%</text></view>
+          <progress percent="{{( item.complete/item.allmoney)*100}}" color="#19A7E9" backgroundColor="#CDE6F1" active="true"></progress>
+       </view>
+       <view class="first_content_money">{{item.time}}</view>
+     </view>
+  </view>
+  <view class="second">
+   <view>昨日收益(元)：{{item.yesterdayEarning}}</view>
+   <view>累计收益(元)：{{item.addEarning}}</view>
+  </view>
 </view>
 
 <view class='three' bindtap='on_new_wish'>
