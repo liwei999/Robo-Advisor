@@ -205,10 +205,10 @@ Page({
           {
             that.setData({zhId: res.data.zhid});
             var per_money = parseFloat(res.data.per_money);   //定投金额
-            var qk = parseFloat(res.data.qk); //资金缺口
-            var yq = parseFloat(res.data.yq); //预期收益
+            var qk = parseFloat(res.data.qk).toFixed(0); //资金缺口
+            var yq = parseFloat(res.data.yq).toFixed(0); //预期收益
             var dtnum = parseFloat(res.data.dtnum);   //定投金额
-            var dtmoney = (per_money * dtnum).toFixed(2)
+            var dtmoney = (per_money * dtnum).toFixed(0)
             //资金缺口=期望金额-资金缺口-初始投资金额
 
             var ar=[];

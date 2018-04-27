@@ -1,4 +1,7 @@
 // pages/first/first.js
+
+var util = require("../../utils/util.js");
+
 Page({
 
   /**
@@ -16,7 +19,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+     //判断是否登录
+    if (util.GetUserInfo().id)
+    {
+     if (getApp().globalData.firstLogin)
+     {
+       getApp().globalData.firstLogin=false;
+        //跳转到登录成功默认主页
+        wx.switchTab({
+          url: '../wish_list/wish_list',
+        });
+     }
+    }
   },
 
   /**
