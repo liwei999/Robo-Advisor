@@ -1,4 +1,6 @@
 // pages/riskType/riskType.js
+var util = require("../../utils/util.js");
+
 Page({
 
   /**
@@ -72,9 +74,43 @@ Page({
     // var currPage=pages[pages.length-3];//心愿计划第三页
     
     // wx.navigateBack({ delta: 2});
-    wx.switchTab({
-      url: '../wish_list/wish_list',
-    })
+
+    //
+    //保存风险测评结果
+    var userinfo = util.GetUserInfo();
+    var obj = new Object();
+    obj.name = userinfo.name;   //登录名称
+    obj.pswd = userinfo.pswd;    //登录密码
+    obj.id = userinfo.id;        //用户id
+    obj.rbFlag = true;   //记住密码
+    obj.RiskTest=true;
+    wx.setStorageSync('rememberUserInfo', obj);
+
+    console.log(util.GetUserInfo())
+
+    if (getApp().globalData.RiskTestGoBack)
+    {
+      var pages = getCurrentPages();
+      var prePage = pages[pages.length - 3];
+
+      //后退两个页面
+      wx.navigateBack({ delta:2});
+
+      //恢复返回状态默认值
+      getApp().globalData.RiskTestGoBack = false;
+
+      //打开购买按钮
+      prePage.autoOpenBuy();
+    }
+    else
+    {
+      wx.switchTab({
+        url: '../wish_list/wish_list',
+      })
+    }
+    //判断是否要跳转到第三页
+
+  
   }
   ,
   /**

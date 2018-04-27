@@ -1,5 +1,7 @@
 // pages/login/login.js
 
+var util = require("../../utils/util.js");
+
 var remoteUrl1 = getApp().globalData.remoteUrl1;
 var remoteUrl2 = getApp().globalData.remoteUrl2;  
 var rui = 'rememberUserInfo';
@@ -75,16 +77,36 @@ Page({
           if (res.data[0].id != "0") {
             wx.setStorageSync("sessionid", res.header["Set-Cookie"])
             var obj = new Object();
-            obj.name = that.data.userName;
-            obj.pswd = that.data.passWd;
-            obj.rbFlag = true;
+            obj.name = that.data.userName;   //登录名称
+            obj.pswd = that.data.passWd;    //登录密码
+            obj.id = res.data[0].id;        //用户id
+            obj.rbFlag = true;   //记住密码
             console.log('obj', obj);
             wx.setStorageSync(rui, obj);
 
-            //跳转到登录成功默认主页
-            wx.switchTab({
-              url: '../wish_list/wish_list',
-            });
+            //判断是否需要返回上一页
+            if (util.GetLoginedGoBacKStatus())
+            {
+              var pages = getCurrentPages();
+              var prePage = pages[pages.length - 2];
+              //跳出上一页购买界面
+              //console.log(prePage.buyButton)
+              
+
+              //后退到上一页
+              wx.navigateBack({
+                delta: -1
+              });
+
+              prePage.autoOpenBuy();
+            }
+            else
+            {
+              //跳转到登录成功默认主页
+              wx.switchTab({
+                url: '../wish_list/wish_list',
+              });
+            }
 
           }
           else {

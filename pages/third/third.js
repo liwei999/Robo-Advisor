@@ -1,9 +1,11 @@
 // pages/third/third.js
 
 import * as echarts from '../../ec-canvas/echarts';
+
+var util = require("../../utils/util.js");
+
 function getPieItemStyle(StartColor,EndColor)
 {
-
   return{
     normal: {
       color: StartColor,// 100% 处的颜色  安卓手机目前对渐变颜色支持不好
@@ -124,7 +126,7 @@ function getLineOption(navDate, dailyReturn1, dailyReturn2){
 var lineChart=null;
 var remoteUrl1 = getApp().globalData.remoteUrl1;  
 var remoteUrl2 = getApp().globalData.remoteUrl2;  
-
+var buyButton=null;
 Page({
   /**
    * 页面的初始数据
@@ -157,7 +159,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-
     if (options.riskvalue)
     {
       //接收传入的参数
@@ -169,18 +170,17 @@ Page({
         periods: options.timevalue    //投资月份
       });
     }
-    
-    console.log(this.data.total_money)
 
-    //隐藏loading
-    //this.setData({ hiddenLoading: true });
+    that.setData({ hiddenLoading: true });
+
     //设置组合风险收益
     this.setData({
       ZhRiskList: []
     });
 
     //选取最优组合
-    that.getDataZh(this.data.risk, this.data.periods, this.data.total_money, this.data.start_invest);
+    //that.getDataZh(this.data.risk, this.data.periods, this.data.total_money, this.data.start_invest);
+
   },
   /**
    * 获得组合id
@@ -210,22 +210,7 @@ Page({
             var dtnum = parseFloat(res.data.dtnum);   //定投金额
             var dtmoney = (per_money * dtnum).toFixed(2)
             //资金缺口=期望金额-资金缺口-初始投资金额
-            //yq = (parseFloat(that.data.total_money) - qk - parseFloat(that.data.start_invest)).toFixed(2)
-      //       {
-      //         value: 335, name: '本金 200000',
-      //           itemStyle: getPieItemStyle('#00cefc', '#00cefc')
-      //       },
-      // {
-      //   value: 310, name: '预期收益 10000',
-      //   itemStyle: getPieItemStyle('#F1A950', '#F1A950')
-      // },
-      // { value: 234, name: '定投 5100', itemStyle: getPieItemStyle('#E26A1A', '#E26A1A') },
 
-      // {
-      //   value: 135, name: '资金缺口 200000',
-      //   itemStyle: getPieItemStyle('#FFFFFF', '#FFFFFF')
-      // }
-            //本金
             var ar=[];
             var ar1 = {
               value: that.data.start_invest, name: '本金 ' + that.data.start_invest,itemStyle: getPieItemStyle('#00cefc', '#00cefc')
@@ -244,12 +229,6 @@ Page({
               ar=[ar1,ar2,ar4]
             else
               ar = [ar1, ar2, ar3, ar4]
-
-            //预期收益
-            //定投金额
-            //资金缺口
-            //定投月数
-          
 
             //绑定本金图表
             that.ChartBarInit(that.data.total_money, ar);
@@ -310,8 +289,6 @@ Page({
           //隐藏loading
           that.setData({ hiddenLoading: true });
         }
-
-
       }
       ,
       fail: function (res) {
@@ -451,33 +428,72 @@ Page({
       })
     }).exec()
   },  
+  //自动弹出购买按钮,首先要测评
+  autoOpenBuy:function()
+  {
+    console.log(util.GetUserInfo())
+
+    //判断是否测评
+    if (!util.GetUserInfo().RiskTest) 
+    {
+      //设置测评后返回标识
+      getApp().globalData.RiskTestGoBack = true;
+
+      //弹出测评窗口
+      util.CheckRiskTest();
+    }
+    else
+    {
+        this.onclickbuy(buyButton)
+    }
+  },
+
   /**
    * 立即购买
    */
   onclickbuy:function(e){
+    //保存在变量中，供回退时调用
+    buyButton=e;
+    //console.log(e)
 
-
-    if (this.data.isLogin)
+    //获取用户登录信息
+    var userinfo=util.GetUserInfo()
+    
+    if (userinfo != null && userinfo.id)
     {
+      //判断是否测评
+      if (!util.GetUserInfo().RiskTest) {
+
+        //设置测评后返回标识
+        getApp().globalData.RiskTestGoBack = true;
+        //弹出测评窗口
+        util.CheckRiskTest();
+        return
+      }
+      //弹出购买窗口
       this.setModalStatus(e)
-    }else
+    }
+    else
     {
       wx.showModal({
         title: '提示',
         content: '您还没有登录，请先登录',
-        cancelText:'登录',
-        confirmText:'注册',
+        cancelText:'取消',
+        confirmText:'登录',
         success:function(res){
           if (res.confirm) {
-            console.log('用户点击注册')
+
+            //设置登录后立即返回上一页标记
+            util.SetLoginedGoBack(true)
+            wx.navigateTo({
+              url: '../login/login',
+            })
           } else if (res.cancel) {
-            console.log('用户点击登录')
+            console.log('用户点击取消')
           }
         }
       })
     }
-    //this.setData({ hideLineChart: !this.data.hideLineChart });
-    //this.setData({ isLogin: !this.data.isLogin});
   },
   /**
    * 显示隐藏菜单
