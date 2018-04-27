@@ -1,51 +1,14 @@
 // pages/myMain/myMain.js
 import * as echarts from '../../ec-canvas/echarts';
+
+var util = require("../../utils/util.js");
+
+//导入饼图配置函数
+var fun_Chart = require("./bindChart.js");
+
+var buyButton = null;
 var remoteUrl1 = getApp().globalData.remoteUrl1;  
-//折线图设置
-function getLineOption(navDate, dailyReturn1, dailyReturn2) {
-
-  return {
-    backgroundColor: "#fff",
-    color: ['red', "#37A2DA"],
-
-    tooltip: {
-      trigger: 'axis'
-    },
-    legend: {
-      // x: 'center',
-      // y: 'bottom',
-      bottom :10
-    },
-    grid: {
-      containLabel: true,
-      width: "85%",
-      height: "75%",
-      top: 20,
-      left:'5%'
-    },
-    xAxis: {
-      type: 'category',
-      boundaryGap: false,
-      data: navDate
-    },
-    yAxis: {
-      x: 'center',
-      type: 'value'
-    },
-    series: [{
-      name: '组合增长率',
-      type: 'line',
-      smooth: true,
-      data: dailyReturn1
-    }, {
-      name: '同类型',
-      type: 'line',
-      smooth: true,
-      data: dailyReturn2
-    }]
-  };
-
-}
+var remoteUrl2 = getApp().globalData.remoteUrl2;  
 Page({
 
   /**
@@ -56,70 +19,44 @@ Page({
     item_bar:[true,false,false,false],
     hidden_arr: [true,false,false],
     isLogin: false,//模拟判断是否登录 默认没登录 false
-
+    ec_bar: {
+      lazyLoad: true
+    },
     ec_line: {
       lazyLoad: true
     },
     isLoaded: false,
     isDisposed: false,
+    nhsyl: 0.1,   //年化收益
+    nhbdl: 0.2, //年化波动率
+    f_hc: 0.3,  //最大回撤
+    f_xp: 0.4,   //夏普比率
     zhId: "116",//组合id
     datetype:[3,6,12,999],//时间类型
     width:"100%",
     item_color: ["#0e98d8","#199ddb","#21a1dd","#2fa8e0","#3fb0e4","#4fb8e8","#5ebfec","#6dc7f0","#88d3f6","#ace5ff"],//表格颜色
-    fund_data: {
-      "fund": [{
-        "jjmc": "华夏成长",
-        "jjdm": "000001",
-        "bl": "81.00",
-        "type": "货币型"
-      }, {
-        "jjmc": "华夏成长2",
-        "jjdm": "000032",
-        "bl": "12.0",
-        "type": "稳健型"
-      }
-      , {
-        "jjmc": "华夏成长2",
-        "jjdm": "000032",
-        "bl": "12.0",
-        "type": "稳健型"
-      }
-      ,
-      {
-        "jjmc": "华夏成长2",
-        "jjdm": "000032",
-        "bl": "12.0",
-        "type": "积极型"
-      }
-        , {
-        "jjmc": "华夏成长2",
-        "jjdm": "000032",
-        "bl": "12.0",
-        "type": "积极型"
-      }, {
-        "jjmc": "华夏成长2",
-        "jjdm": "000032",
-        "bl": "12.0",
-        "type": "积极型"
-      }
-      ],
-      "type": ["货币型", "稳健型","积极型"]
-    }
+    bar_data:{},    //组合数据数据
+    fund_data:{}   //组合配置基金详情数据
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.ecComponent_line = this.selectComponent('#mychart-dom-line');
+    this.ecComponent_bar = this.selectComponent('#mychart-dom-bar');
+
     var that=this;
     that.getCharData(that.data.zhId,'','',that.data.datetype[0]);
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    this.ecComponent_line = this.selectComponent('#mychart-dom-line');
+    that.getZhDetails(that.data.zhId);
+    //return
+     var data1=[
+      { value: 335, name: '直接访问' },
+      { value: 310, name: '邮件营销' },
+      { value: 234, name: '联盟广告' },
+      { value: 135, name: '视频广告' },
+      { value: 1548, name: '搜索引擎' }]
+    //that.ChartBarInit('hehe',data1)
   },
 
   /**
@@ -208,48 +145,106 @@ Page({
       url: '../history/history',
     })
   },
-  click_buy:function(e)
-  {
 
-    if (this.data.isLogin) {
-      wx.showModal({
-        content: '您还没有做风险测评，请先完成测评',
-        confirmText: '去测评',
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击去测评');
-            wx.redirectTo({
-              url: '../riskAssessment/riskAssessment',
-            })
-          } else if (res.cancel) {
-            console.log('用户点击取消') 
-          }
-        }
-      })
-    } else {
+  //自动弹出购买按钮,首先要测评
+  autoOpenBuy: function () {
+
+    //判断是否测评
+    if (!util.GetUserInfo().RiskTest) {
+      //设置测评后返回标识
+      getApp().globalData.RiskTestGoBack = true;
+
+      //弹出测评窗口
+      util.CheckRiskTest();
+    }
+    else {
+      this.onclickbuy(buyButton)
+    }
+  },
+
+  onclickbuy:function(e)
+  {
+    //保存在变量中，供回退时调用
+    buyButton = e;
+    //获取用户登录信息
+    var userinfo = util.GetUserInfo()
+
+    if (userinfo != null && userinfo.id) {
+      //判断是否测评
+      if (!util.GetUserInfo().RiskTest) {
+
+        //设置测评后返回标识
+        getApp().globalData.RiskTestGoBack = true;
+        //弹出测评窗口
+        util.CheckRiskTest();
+        return
+      }
+      //弹出购买窗口
+      this.setModalStatus(e)
+    }
+    else {
       wx.showModal({
         title: '提示',
         content: '您还没有登录，请先登录',
-        cancelText: '登录',
-        confirmText: '注册',
+        cancelText: '取消',
+        confirmText: '登录',
         success: function (res) {
           if (res.confirm) {
-            console.log('用户点击注册');
-            wx.navigateTo({
-              url: '../register/register',
-            });
-          } else if (res.cancel) {
-            console.log('用户点击登录')
+
+            //设置登录后立即返回上一页标记
+            util.SetLoginedGoBack(true)
             wx.navigateTo({
               url: '../login/login',
-            });
+            })
+          } else if (res.cancel) {
+            
           }
         }
       })
-      this.setData({ isLogin: !this.data.isLogin });
     }
     
   },
+  /**
+   * 显示隐藏菜单
+   */
+  setModalStatus: function (e) {
+    console.log("设置显示状态，1显示0不显示", e.currentTarget.dataset.status);
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(300).step()
+
+    this.setData({
+      animationData: animation.export()
+    })
+
+    if (e.currentTarget.dataset.status == 1) {
+      this.setData(
+        {
+          showModalStatus: true
+        }
+      );
+    }
+
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation
+      })
+      if (e.currentTarget.dataset.status == 0) {
+        this.setData(
+          {
+            showModalStatus: false,
+          }
+        );
+
+        //this.pageScrollToBottom();
+      }
+    }.bind(this), 200)
+  }, 
   /**
    * 根据组合id获得图形数据
    */
@@ -300,7 +295,7 @@ Page({
       });
 
       //setOption(chart);
-      chart.setOption(getLineOption(arr1, arr2, arr3));
+      chart.setOption(fun_Chart.getLineOption(arr1, arr2, arr3));
 
       // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
       this.chart = chart;
@@ -314,5 +309,72 @@ Page({
       return chart;
     });
   },
+  //初始化饼图
+  ChartBarInit: function (titleTxt, ChartData) {
+    this.ecComponent_bar.init((canvas, width, height) => {
+      const pieChart = echarts.init(canvas, null, {
+        width: width,
+        height: height
+      });
+      //取得图表配置数据
+      pieChart.setOption(fun_Chart.getPieOption(titleTxt, ChartData));
 
+      // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+      this.setData({
+        isLoaded: true,
+        isDisposed: false
+      });
+
+      // 注意这里一定要返回 chart 实例，否则会影响事件处理等
+      return pieChart;
+    });
+  },
+
+  /**
+   * 根据组合详情 配置比例、基金组合详情、风险收益数据
+   */
+ getZhDetails: function(zhid) {
+   var that=this;
+    wx.request({
+      url: remoteUrl2 + 'GetZhDetails/?zhid=' + zhid,
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        
+        if (res.data) {
+          //整理组合配置数据
+          var bardata = []
+          var item={};
+          var item_color=that.data.item_color;
+          for (var i = 0; i < res.data.type.length; i++) 
+          {
+            var ar = res.data.type[i];
+            item = { value: ar.bl, name: ar.f_type, itemStyle: fun_Chart.getPieItemStyle(item_color[i], item_color[i])}
+            bardata.push(item);
+          }
+          console.log(bardata)
+          that.setData({
+            fund_data: res.data
+          });
+
+          //初始化组合配置图表
+          that.ChartBarInit('', bardata)
+        }
+      }
+      ,fail: function (res) {
+        util.toast("请求数据异常！");
+      },
+      complete: function (res) {
+      }
+    })
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    this.ecComponent_line = this.selectComponent('#mychart-dom-line');
+    this.ecComponent_bar = this.selectComponent('#mychart-dom-bar');
+  }
 })

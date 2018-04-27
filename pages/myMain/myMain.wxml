@@ -6,7 +6,7 @@
     <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">月投收益</view>
   </view>
    
-  <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="0" bindchange="bindChange">
     <!-- 收益表现 -->
     <swiper-item>
     <view style='width:100%; height:100%;display:{{hidden_arr[0]?"block":"none"}};'>
@@ -34,38 +34,38 @@
     <view class='{{item_bar[2]?"first_tab_on":""}}' bindtap='on_first_tab' data-index='2'>近一年</view>
     <view class='{{item_bar[3]?"first_tab_on":""}}' bindtap='on_first_tab' data-index='3'>成立以来</view>
   </view>
-
   <view class="first_foot">
     <view>
      <view>年化收益</view>
-     <view class="orange">5.18%</view>
+     <view class="orange">{{nhsyl}}%</view>
     </view>
     <view>
      <view>年化波动率</view>
-     <view class="blank">2.19%</view>
+     <view class="blank">{{nhbdl}}%</view>
     </view>
     <view>
      <view>最大回撤</view>
-     <view class="green">-2.92%</view>
+     <view class="green">{{f_hc}}%</view>
     </view>
     <view>
      <view style='border-right:0'>夏普比率</view>
-     <view style='border-right:0' class="blank">--</view>
+     <view style='border-right:0' class="blank">{{f_xp}}</view>
     </view>
   </view>
 </view>
 
 <view class='first two'>
  <view class='two_class'>组合配置</view>
- <image src='../../image/temp2.png' style='width:690rpx; height:460rpx;'></image>
+  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ec_bar}}"></ec-canvas>
+  <image src='../../image/temp2.png' style='width:690rpx; height:460rpx;display:none'></image>
 </view>
 
 <view class='first three'>
 
 
  <view class="three1" wx:for="{{fund_data.type}}" wx:for-index="type_index" wx:for-item="itemName" style='background-color:{{fund_data.type.length<=7?item_color[type_index+2]:item_color[9]}}'>
-    <view class="three_type">{{itemName}}</view>
-    <view class="three_item" wx:for="{{fund_data.fund}}" wx:for-item="funditem"  wx:if="{{funditem.type==itemName}}">
+    <view class="three_type">{{itemName.f_type}}</view>
+    <view class="three_item" wx:for="{{fund_data.fund}}" wx:for-item="funditem"  wx:if="{{funditem.type==itemName.f_type}}">
     
       <view>
         <view class='three_name'>{{funditem.jjmc}}</view>
@@ -93,5 +93,27 @@
  <view bindtap='click_history'>
  <image src='../../image/temp7.png' style="width:100%; height:100%;"></image>
  </view>
- <view bindtap='click_buy'>立即购买</view>
+ <view bindtap='onclickbuy' data-status="1">立即购买</view>
+</view>
+
+<view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+<view class='menu_title'><text>选择购买方式</text><icon class="icon-small" size="23" type="cancel" bindtap="setModalStatus" data-status="0"></icon></view>
+<view class="list_item">
+  <view class='item'>
+  <view style='padding:25rpx;background:green;margin-right: 20rpx;'></view>
+  <view>
+   <view>模拟心愿</view>
+   <view class='item_cen'>为您创建一个虚拟的心愿单，不真实扣除您的金额，让您感受心愿投资状况</view>
+  </view>
+  <icon type='success_no_circle' size="22"></icon>
+  </view>
+  <view class='item'>
+      <view style='padding:25rpx;background:green;margin-right: 20rpx;'></view>
+  <view>
+   添加银行卡
+  </view>
+  <!-- <icon type='success_no_circle' size="22"></icon> -->
+  </view>
+</view>
 </view>

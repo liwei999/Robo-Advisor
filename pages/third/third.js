@@ -171,7 +171,7 @@ Page({
       });
     }
 
-    that.setData({ hiddenLoading: true });
+    //that.setData({ hiddenLoading: true });
 
     //设置组合风险收益
     this.setData({
@@ -179,7 +179,7 @@ Page({
     });
 
     //选取最优组合
-    //that.getDataZh(this.data.risk, this.data.periods, this.data.total_money, this.data.start_invest);
+    that.getDataZh(this.data.risk, this.data.periods, this.data.total_money, this.data.start_invest);
 
   },
   /**
