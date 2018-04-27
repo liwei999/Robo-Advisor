@@ -1,19 +1,47 @@
 <!--pages/history/history.wxml-->
 <view class="view one">
-  <image src="../../image/temp8.png" style='width:100%; height:100%'></image>
+  
+    <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">18-02-09</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">17-09-15</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">16-12-09</view>
+    <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">16-11-11</view>
+  </view>
+  <view class='counten'>
+  {{reasons[currentTab]}}
+  </view>
+
+  
+
+
 </view>
 <view class="view two">
-  <image src="../../image/temp9.png" style='width:100%; height:100%'></image>
-</view>
-<view class="view three">
-  <image src="../../image/temp10.png" style='width:100%; height:100%'></image>
-</view>
-<view class="view four">
-  <image src="../../image/temp11.png" style='width:100%; height:100%'></image>
-</view>
-<view class="view five">
-  <image src="../../image/temp12.png" style='width:100%; height:100%'></image>
-</view>
-<view class="view six">
-  <image src="../../image/temp13.png" style='width:100%; height:100%'></image>
+
+
+<!-- <view class="three1">
+    <view class="three_type">货币型</view>
+    <view class="three_item">
+      <view class='operation'>加</view>
+      <view class='fund_item'>
+        <view class='three_name'>先锋现金宝货币</view>
+        <view class='three_jysdm'>003585</view>
+      </view>
+      <view class='three_bl'>81.89<text>%</text><image src='../../image/Silo.png' style='width:40rpx;height:12rpx;'></image> 81.89<text>%</text></view>
+    </view>
+  </view> -->
+
+
+
+ <view class="three1" wx:for="{{fund_data.type}}" wx:for-index="type_index" wx:for-item="itemName" style='background-color:{{fund_data.type.length-1!=type_index?item_color[type_index]:item_color[9]}}'>
+    <view class="three_type">{{itemName}}</view>
+    <view class="three_item" wx:for="{{fund_data.fund}}" wx:for-item="funditem"  wx:if="{{funditem.type==itemName}}">
+    <view class='operation'>{{funditem.operation}}</view>
+      <view class='fund_item'>
+        <view class='three_name'>{{funditem.jjmc}}</view>
+        <view class='three_jysdm'>{{funditem.jjdm}}</view>
+      </view>
+      <view class='three_bl'>{{funditem.bl1}}<text>%</text><image src='../../image/Silo.png' style='width:40rpx;height:12rpx;'></image> {{funditem.bl2}}<text>%</text></view>
+    
+    </view>
+  </view>
 </view>

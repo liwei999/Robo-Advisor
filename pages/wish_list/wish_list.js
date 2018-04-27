@@ -1,25 +1,61 @@
 // pages/wish_list/wish_list.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
-  },
-
+    target: [
+      {
+        "imageUrl": "",
+        "name": "六年后送孩子留学",
+        "allmoney": 10000,
+        "complete": 10000,
+        "time": "最近一次心愿金存入4月13日",
+        " yesterdayEarning": "0.56",
+        "addEarning": "66.42"
+      }, {
+        "imageUrl": "",
+        "name": "六年后送孩子留学",
+        "allmoney": 10000,
+        "complete": 4000,
+        "time": "最近一次心愿金存入4月13日",
+        " yesterdayEarning": "0.56",
+        "addEarning": "66.42"
+      },
+      {
+        "imageUrl": "",
+        "name": "六年后送孩子留学",
+        "allmoney": 10000,
+        "complete": 2000,
+        "time": "最近一次心愿金存入4月13日",
+        " yesterdayEarning": "0.56",
+        "addEarning": "66.42"
+      },
+      {
+        "imageUrl": "",
+        "name": "六年后送孩子留学",
+        "allmoney": 10000,
+        "complete": 0,
+        "time": "最近一次心愿金存入4月13日",
+        " yesterdayEarning": "0.56",
+        "addEarning": "66.42"
+      }
+    ]
+  }
+  ,
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
 
   /**
