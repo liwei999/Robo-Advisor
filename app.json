@@ -18,7 +18,8 @@
     "pages/register/register",
     "pages/login/login",
     "pages/wish_detailed/wish_detailed",
-    "pages/auto_buy/auto_buy"
+    "pages/auto_buy/auto_buy",
+    "pages/accelerate/accelerate"
   ],
   "window": {
     "backgroundTextStyle": "light",

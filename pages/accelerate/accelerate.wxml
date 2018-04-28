@@ -1,0 +1,26 @@
+<view class="count">
+<view class='mbfont'>购入金额</view>
+<view class="inpview inpmargin">
+  <image src='../../image/money.png' class="inpimage"></image>
+  <input class='inptext' placeholder='金额' placeholder-class='inpfont' value='{{desireMoney}}' bindinput='desireInpMoney'></input>
+</view>
+<view class='inpmargin'>
+    <view class='first_bg' style='margin-left:-76rpx;left:25%'><image src='../../image/bg.png' style='width:100%;height:100%;' ></image><text>25%</text></view>
+          <progress percent="25" color="#19A7E9" backgroundColor="#CDE6F1" active="true"></progress>
+</view>
+
+
+
+<view class='mbfont'>心情记录</view>
+<view class="inpmargin">
+  <textarea placeholder='可以写下此时的心情哦' placeholder-class='textclass' maxlength='-1'></textarea>
+</view>
+
+
+
+
+<view>
+  
+</view>
+<button class="btn" bindtap='next_step'>确认</button>
+</view>

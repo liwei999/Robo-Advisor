@@ -72,7 +72,7 @@ Page({
       icon:"none"
     });
     wx.navigateTo({
-      url: '../auto_buy/auto_buy',
+      url: '../accelerate/accelerate',
     })
   }
   ,

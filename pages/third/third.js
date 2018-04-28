@@ -142,7 +142,7 @@ Page({
     start_invest: '1000',  //初始金额
     total_money:'10000',    //期望完成收益金额(本金+收益)
     ZhRiskList: [],  //组合风险收益
-    hiddenLoading: false,//页面加载loading true不显示
+    hiddenLoading: true,//页面加载loading true不显示
     BarData: [],  //Bar图数据
     ec: {
       lazyLoad:true
@@ -151,7 +151,8 @@ Page({
       lazyLoad: true
     },
     isLoaded: false,
-    isDisposed: false
+    isDisposed: false,
+    hiddenarr:["block","none"]
   },
 
   /**
@@ -179,7 +180,7 @@ Page({
     });
 
     //选取最优组合
-    that.getDataZh(this.data.risk, this.data.periods, this.data.total_money, this.data.start_invest);
+    //that.getDataZh(this.data.risk, this.data.periods, this.data.total_money, this.data.start_invest);
 
   },
   /**
@@ -537,16 +538,32 @@ Page({
         );
 
         this.pageScrollToBottom();
+        wx.showModal({
+          title: '',
+          content: '您没有完成交易，可以选择创建一个模拟心愿，来体验心愿运行状态',
+          cancelColor:"#000",
+          confirmText:"去创建",
+          confirmColor:"#000",
+          success: function (res) {
+            if (res.confirm) {
+              console.log('去创建');
+              wx.switchTab({
+                url: '../wish_list/wish_list',
+              });
+            } else if (res.cancel) {
+              console.log('取消')
+            }
+          }
+        })
       }
     }.bind(this), 200)
   }, 
   /**
-   * 确认绑定
+   * 确认购买
    */
   next_step:function(){
-    wx.navigateTo({
-      url: '../bankcard/bankcard',
-    })
+     //判断扣款金额是不是大于5万，
+    this.setData({ hiddenarr:["none","display"]});
   },
   onclickmain:function(){
     wx.navigateTo({
@@ -591,6 +608,30 @@ Page({
         that.setData({ hiddenLoading: true });
       }
     })
+  },
+  /**
+   * 绑定银行卡
+   */
+  on_addbank:function(e){
+    wx.navigateTo({
+      url: '../certification/certification',
+    })
+  },
+  /**
+   * 分笔买入
+   */
+  next_fb:function(e)
+  {
+    wx.navigateTo({
+      url: '../auto_buy/auto_buy',
+    })
+  },
+  /**
+   * 上一步
+   */
+  next_up:function(e)
+  {
+    this.setData({ hiddenarr: ["display", "none"] });
   }
 
 })
