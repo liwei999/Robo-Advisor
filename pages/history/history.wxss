@@ -26,7 +26,7 @@
 .three1{margin-bottom: 10rpx;display: flex;flex-direction: column;background-color: #0e98d8; padding-bottom: 24rpx;}
 .three1:last-child{margin-bottom: 0;}
 .three_item{display: flex;flex-direction: row; align-items: center; justify-content: center; background-color: #fff;margin: 0 40rpx 2rpx 40rpx; padding-left: 18rpx;}
-.operation{background: #19A7E9;border-radius:20rpx; width: 40rpx;height:32rpx; font-size: 24rpx; color: #FFFFFF; text-align: center;padding-top: 8rpx}
+.operation{background: #19A7E9;border-radius:20rpx; width: 40rpx;height:40rpx; font-size: 24rpx; color: #FFFFFF; display: flex;align-items: center; justify-content: center; }
 .fund_item{ flex: 3;overflow:hidden;}
 .three_name{color:#373737;font-size: 32rpx;padding-top: 22rpx; padding-left: 19rpx;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .three_jysdm{color: #FF502E;font-size: 24rpx; padding-bottom: 21rpx;padding-top: 5rpx; padding-left: 19rpx;}
