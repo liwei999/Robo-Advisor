@@ -20,7 +20,8 @@ Page({
    */
   onLoad: function (options) {
      //判断是否登录
-    if (util.GetUserInfo().id)
+    var userinfo = util.GetUserInfo()
+    if (userinfo && userinfo.id)
     {
      if (getApp().globalData.firstLogin)
      {
