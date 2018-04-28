@@ -472,7 +472,8 @@ Page({
         return
       }
       //弹出购买窗口
-      this.setModalStatus(e)
+      this.setData({ hiddenarr: ["display", "none"] });
+      this.setModalStatus(e);
     }
     else
     {
