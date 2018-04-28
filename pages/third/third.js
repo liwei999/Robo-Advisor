@@ -142,7 +142,7 @@ Page({
     start_invest: '1000',  //初始金额
     total_money:'10000',    //期望完成收益金额(本金+收益)
     ZhRiskList: [],  //组合风险收益
-    hiddenLoading: true,//页面加载loading true不显示
+    hiddenLoading: false,//页面加载loading true不显示
     BarData: [],  //Bar图数据
     ec: {
       lazyLoad:true
@@ -180,7 +180,7 @@ Page({
     });
 
     //选取最优组合
-    //that.getDataZh(this.data.risk, this.data.periods, this.data.total_money, this.data.start_invest);
+    that.getDataZh(this.data.risk, this.data.periods, this.data.total_money, this.data.start_invest);
 
   },
   /**
