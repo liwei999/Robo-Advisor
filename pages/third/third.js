@@ -585,7 +585,7 @@ Page({
       },
       success: function (res) {
         if (res.data) {
-          console.log(res.data)
+          //console.log(res.data)
           var tempdata = res.data;
           if (tempdata.length > 0) {
             that.setData({ 
@@ -616,18 +616,36 @@ Page({
     var that = this;
     that.setData({ hiddenLoading: false });
     wx.request({
-      url: remoteUrl2 + 'SaveDream/?userid=1&dr_name=test2&dr_money=10000&dr_time=24&in_money=5050&max_hc=-0.06&classid=206&iftrue=0&n_num=12&p_money=80.8&nd=' + parseInt(1000 * Math.random()),
+      url: remoteUrl2 + 'SaveDream/?userid=1&dr_name=怎么是空呢9&dr_money=10000&dr_time=24&in_money=5050&max_hc=-0.06&classid=206&iftrue=0&n_num=12&p_money=80.8&nd=' + parseInt(1000 * Math.random()),
       method: 'GET',
       header: {
         'Content-Type': 'application/json'
       },
       success: function (res) {
-        console.log(res);
+        //console.log(res);
         if (res.errMsg =="request:ok")
         {
-          wx.switchTab({
-            url: '../wish_list/wish_list',
-          });
+
+          {
+            wx.switchTab({
+              url: '../wish_list/wish_list',
+            });
+          }
+          // var userinfo = util.GetUserInfo()
+          // if (userinfo && userinfo.id) {
+          //   var pages = getCurrentPages();
+          //   var prePage = pages[pages.length - 4];
+          //   //console.log(prePage);
+          //   wx.navigateBack({ delta: 3 });
+          //   prePage.getDreamList(userinfo.id);
+          // }
+          // else
+          // {
+          //   wx.switchTab({
+          //     url: '../wish_list/wish_list',
+          //   });
+          // }
+          
         }
         else
         {
