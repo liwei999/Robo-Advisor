@@ -501,6 +501,7 @@ Page({
    * 显示隐藏菜单
    */
   setModalStatus: function (e) {
+    var that =this;
     console.log("设置显示状态，1显示0不显示", e.currentTarget.dataset.status);
     var animation = wx.createAnimation({
       duration: 200,
@@ -548,9 +549,7 @@ Page({
           success: function (res) {
             if (res.confirm) {
               console.log('去创建');
-              wx.switchTab({
-                url: '../wish_list/wish_list',
-              });
+              that.SaveDream();
             } else if (res.cancel) {
               console.log('取消')
             }
@@ -610,6 +609,54 @@ Page({
       }
     })
   },
+  /**
+    * 保存模拟心愿
+    */
+  SaveDream: function () {
+    var that = this;
+    that.setData({ hiddenLoading: false });
+    wx.request({
+      url: remoteUrl2 + 'SaveDream/?userid=1&dr_name=test2&dr_money=10000&dr_time=24&in_money=5050&max_hc=-0.06&classid=206&iftrue=0&n_num=12&p_money=80.8&nd=' + parseInt(1000 * Math.random()),
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.errMsg =="request:ok")
+        {
+          wx.switchTab({
+            url: '../wish_list/wish_list',
+          });
+        }
+        else
+        {
+          wx.showToast({
+            title: '创建心愿失败',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+        
+      }
+      ,
+      fail: function (res) {
+        wx.showToast({
+          title: '创建心愿失败',
+          icon: 'none',
+          duration: 2000
+        });
+      },
+      complete: function (res) {
+        //隐藏loading
+        that.setData({ hiddenLoading: true });
+      }
+    })
+  },
+
+
+
+
   /**
    * 绑定银行卡
    */
