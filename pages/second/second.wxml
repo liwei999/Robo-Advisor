@@ -19,7 +19,7 @@
 <view class="havemoney">
  <view class="havemoneyleft {{typeLeft}}" bindtap='bindstyle' data-type='l'>
  <view class='havetitle'>可投入资金</view>
- <view class='btnmoney'><input bindinput="moneyInput" placeholder='点击输入金额' placeholder-class='inpmoney'></input></view>
+ <view class='btnmoney'><input bindinput="moneyInput" placeholder='点击输入金额' placeholder-class='inpmoney' type='number' focus='{{moneyFous}}'></input></view>
  </view>
  <view class="havemoneyright {{typeReight}}" bindtap='bindstyle' data-type='r'>
  <view >暂无金额</view>

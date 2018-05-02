@@ -1,2 +1,4 @@
 <!--pages/interest_circle/interest_circle.wxml-->
-<text>pages/interest_circle/interest_circle.wxml</text>
+<view class="one">
+  <image src='../../image/temp26.png'></image>
+</view>

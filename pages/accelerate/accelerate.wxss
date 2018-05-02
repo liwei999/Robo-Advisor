@@ -4,7 +4,7 @@ page{background-color: #F0F6F9; display: flex; flex-direction: column;}
 .count .mbfont{font-size: 30rpx;color:#888888 ; line-height: 64rpx;   }
 .inpview{height:100rpx; background-color: #E3EDF4; display: flex;flex-direction: row;align-items: center}
 .inpimage{ width: 36rpx; height: 36rpx;margin: 34rpx 15rpx 30rpx 13rpx;}
-.inpfont{font-size: 34rpx;color: #000000;}
+.inpfont{font-size: 34rpx;color: #888;}
 .inpmargin{ margin-bottom: 20rpx;}
 .btn{background-color: #19A7E9; margin-bottom: 64rpx; margin-top:80rpx;color: #FFFFFF;font-size: 32rpx;}
 

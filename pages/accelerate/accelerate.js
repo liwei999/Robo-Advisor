@@ -1,4 +1,5 @@
 // pages/accelerate/accelerate.js
+var util=require("../../utils/util.js");
 Page({
 
   /**
@@ -60,7 +61,14 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  // onShareAppMessage: function () {
   
+  // }
+  /**
+   * 
+   */
+  desireInpMoney:function(e){
+    util.toast("修改了金额")
+    console.log(e);
   }
 })

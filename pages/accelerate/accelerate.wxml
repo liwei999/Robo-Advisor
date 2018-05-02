@@ -2,7 +2,7 @@
 <view class='mbfont'>购入金额</view>
 <view class="inpview inpmargin">
   <image src='../../image/money.png' class="inpimage"></image>
-  <input class='inptext' placeholder='金额' placeholder-class='inpfont' value='{{desireMoney}}' bindinput='desireInpMoney'></input>
+  <input class='inptext' placeholder='金额' placeholder-class='inpfont' value='{{desireMoney}}' bindinput='desireInpMoney' type='number'></input>
 </view>
 <view class='inpmargin'>
     <view class='first_bg' style='margin-left:-76rpx;left:25%'><image src='../../image/bg.png' style='width:100%;height:100%;' ></image><text>25%</text></view>
