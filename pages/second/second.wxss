@@ -8,11 +8,13 @@ page{background-color: #F0F6F9; display: flex; flex-direction: column;}
 .inpleft{padding: 27rpx; border-right: 1rpx solid #E5EDF2;}
 .inpright{padding: 27rpx; border-left: 1rpx solid #E5EDF2;}
 .inpimage{width: 36rpx; height: 36rpx;}
-.inpfont{font-size: 34rpx;color: #000000; text-align: right;font-weight: 500;}
-.inpcount{display: flex; flex-direction: row;}
-.inpclass{ width: 100rpx; color: #000000;text-align: right}
+.inpfont{font-size: 34rpx;color: #888888; text-align: right;font-weight: 500;}
+.inpcount{display: flex; flex-direction: row;flex: 6;justify-content:center;}
+.inpclass{ width: 65rpx; color: #000000;text-align: right}
+.inpmargin{margin-left: -48rpx;}
 .target{color: #19A7E9; font-size: 22rpx; margin-top: 9rpx;}
 .mbfont_margin_top{ margin-top: 20rpx;}
+picker{width: 100%;}
 /*实现愿望期限end  */
 
 /*有无投入基金start  */
