@@ -19,7 +19,7 @@
 <view class='mbfont'>目标愿望预算</view>
 <view class="inpview">
   <image src='../../image/money.png' class="inpimage"></image>
-  <input class='inptext' placeholder='金额' placeholder-class='inpfont' value='{{desireMoney}}' bindinput='desireInpMoney'></input>
+  <input class='inptext' placeholder='金额' placeholder-class='inpfont' value='{{desireMoney}}' bindinput='desireInpMoney' type='number'></input>
 </view>
 <button class="btn" bindtap='next_step'>下一步</button>
 </view>

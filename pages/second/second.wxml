@@ -3,7 +3,14 @@
 <view class='mbfont'>实现愿望期限</view>
 <view class="inpview">
   <view class='inpleft' bindtap='timereduce' data-time='one'><image src='../../image/minus.png' class='inpimage'></image></view>
-  <view class="inpcount"><input placeholder-class='inpfont' placeholder='6' class='inpclass' value='{{timevalue}}'></input><view>个月</view></view>
+    <picker bindchange='bindtime' range="{{timeArr}}" value="{{timeIndex}}" range-key="{{'name'}}">
+  <view class="inpcount">
+  <!-- <input placeholder-class='inpfont' placeholder='6' class='inpclass' value='{{timevalue}}'></input> -->
+
+ {{timevalue}}个月
+
+  </view>
+    </picker>
   <view class='inpright' bindtap='timeadd' data-time='one'><image src='../../image/Plus.png' class='inpimage'></image></view>
 </view>
 <view class='target'><text>预计2018年9月达成</text></view>
@@ -12,7 +19,7 @@
 <view class="havemoney">
  <view class="havemoneyleft {{typeLeft}}" bindtap='bindstyle' data-type='l'>
  <view class='havetitle'>可投入资金</view>
- <view class='btnmoney'><input bindinput="moneyInput" placeholder='点击输入金额' placeholder-class='inpmoney'></input></view>
+ <view class='btnmoney'><input bindinput="moneyInput" placeholder='点击输入金额' placeholder-class='inpmoney' type='number' focus='{{moneyFous}}'></input></view>
  </view>
  <view class="havemoneyright {{typeReight}}" bindtap='bindstyle' data-type='r'>
  <view >暂无金额</view>
@@ -23,7 +30,7 @@
 <view class='mbfont mbfont_margin_top'>最大风险承受</view>
 <view class="inpview">
   <view class='inpleft' bindtap='timereduce' data-time='two'><image src='../../image/minus.png' class='inpimage'></image></view>
-  <view class="inpcount"><input placeholder-class='inpfont' placeholder='6' class='inpclass' value='{{riskvalue}}' bindinput="riskInput"></input><view>%</view></view>
+  <view class="inpcount" bindtap='onrisk'><input placeholder-class='inpfont' class='inpclass inpmargin' value='{{riskvalue}}' bindinput="riskInput"  type='number' focus='{{riskFous}}'></input><view>%</view></view>
   <view class='inpright' bindtap='timeadd' data-time='two'><image src='../../image/Plus.png' class='inpimage'></image></view>
 </view>
 

@@ -11,8 +11,11 @@ Page({
     typeReight: "havemoneyactionr",//有无投入资金右
     desireInp: "愿望名默认为空",      //愿望名称
     desireMoney: "10000",   //愿望期望金额
-    start_invest:"5000" //起始投入金额
-
+    start_invest:"5000", //起始投入金额
+    riskFous:false,//风险文本框焦点
+    moneyFous:false,//可投入资金
+    timeArr: [{ id: 1, name: "一年" }, { id: 2, name: "两年" }, { id: 3, name: "三年" }, { id: 4, name: "四年" }, { id: 5, name: "五年" }, { id: 6, name: "六年" }, { id: 7, name: "七年" }, { id: 8, name: "八年" }, { id: 9, name: "九年" }, { id: 10, name: "十年" }],//愿望期限选择
+    timeIndex:0//愿望期限下标
   },
 
   /**
@@ -116,6 +119,7 @@ Page({
     if (e.currentTarget.dataset.type=="l")
     {
       that.setData({typeLeft: "havemoneyactionl",typeReight:""});
+      that.setData({ moneyFous:true})
     }
     else{
       that.setData({ typeLeft: "", typeReight: "havemoneyactionr" });
@@ -151,5 +155,20 @@ Page({
     {
       that.setData({ riskvalue: ++that.data.riskvalue });      
     }
+  },
+  /**
+   * 获得焦点
+   */
+  onrisk:function(e)
+  {
+    this.setData({ riskFous:true});
+  },
+  /**
+   * 绑定时间
+   */
+  bindtime:function(e)
+  {
+    console.log('picker country 发生选择改变，携带值为', e.detail.value);
+    this.setData({ timeIndex: e.detail.value, timevalue: this.data.timeArr[e.detail.value].id * 12});
   }
 })

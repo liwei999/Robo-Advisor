@@ -44,24 +44,51 @@
 
 <view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
 <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
-<view class='menu_title'><text>选择购买方式</text><icon class="icon-small" size="23" type="cancel" bindtap="setModalStatus" data-status="0"></icon></view>
+<view class='menu_title'><text>选择银行卡</text><icon class="icon-small" size="23" type="cancel" bindtap="setModalStatus" data-status="0"></icon></view>
+<view style='display:{{hiddenarr[0]}};'>
 <view class="list_item">
   <view class='item'>
-  <view style='padding:25rpx;background:green;margin-right: 20rpx;'></view>
-  <view>
-   <view>模拟心愿</view>
-   <view class='item_cen'>为您创建一个虚拟的心愿单，不真实扣除您的金额，让您感受心愿投资状况</view>
+  2000000
   </view>
-  <icon type='success_no_circle' size="22"></icon>
+
+  <view class='item_bank'>
+    <view class='bank_icon'><image src='../../image/CMB.png'></image></view>
+    <view class='bank_text'>
+    招商银行储蓄卡(0000)
+    </view>
+    <view class='bank_ok'>
+    <image src='../../image/tick.png'></image>
+    </view>
+    <!-- <icon type='success_no_circle' size="22"></icon> -->
   </view>
-  <view class='item'>
-      <view style='padding:25rpx;background:green;margin-right: 20rpx;'></view>
-  <view>
-   添加银行卡
-  </view>
-  <!-- <icon type='success_no_circle' size="22"></icon> -->
+
+
+<view class='item_bank' bindtap='on_addbank'>
+  <view class='bank_icon'><image src='../../image/card.png'></image></view>
+  <view class='add_text'>
+      添加银行卡
   </view>
 </view>
 
+</view>
 <view class="three"><button class="btn" bindtap='next_step'>确认购买</button></view>
+</view>
+
+
+
+<view style='display:{{hiddenarr[1]}};'>
+<view class="list_Prompt">
+  <view class='item_Prompt'>
+  买入金额超过银行卡支付最高限额，可选择分笔自动买入或重新选择银行卡
+  </view>
+</view>
+<view class="three prompt">
+<button class="btn_l" bindtap='next_up'>上一步</button>
+<button class="btn_r" bindtap='next_fb'>分笔自动买入</button>
+</view>
+</view>
+
+
+
+
 </view>
