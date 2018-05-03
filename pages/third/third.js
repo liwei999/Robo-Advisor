@@ -144,6 +144,9 @@ Page({
     ZhRiskList: [],  //组合风险收益
     hiddenLoading: false,//页面加载loading true不显示
     BarData: [],  //Bar图数据
+    n_num: 0, //#定投期数
+    p_money: 0,//#每月定投金额
+    iftrue: 0,//是否真实交易，默认为0
     ec: {
       lazyLoad:true
     },
@@ -204,14 +207,14 @@ Page({
           //console.log(res.data)
           if(res.data.zhid!="")
           {
-            that.setData({zhId: res.data.zhid});
+            
             var per_money = parseFloat(res.data.per_money);   //定投金额
             var qk = parseFloat(res.data.qk).toFixed(0); //资金缺口
             var yq = parseFloat(res.data.yq).toFixed(0); //预期收益
             var dtnum = parseFloat(res.data.dtnum);   //定投金额
             var dtmoney = (per_money * dtnum).toFixed(0)
             //资金缺口=期望金额-资金缺口-初始投资金额
-
+            that.setData({ zhId: res.data.zhid, n_num: dtnum, p_money: per_money});
             var ar=[];
             var ar1 = {
               value: that.data.start_invest, name: '本金 ' + that.data.start_invest,itemStyle: getPieItemStyle('#00cefc', '#00cefc')
@@ -614,15 +617,17 @@ Page({
     */
   SaveDream: function () {
     var that = this;
+    var userinfo = util.GetUserInfo();
     that.setData({ hiddenLoading: false });
+    // console.log(remoteUrl2 + 'SaveDream/?userid=' + userinfo.id + '&dr_name=' + that.data.desireInp + '&dr_money=' + that.data.total_money + '&dr_time=' + that.data.periods + '&in_money=' + that.data.p_money + '&max_hc=' + that.data.risk + '&classid=' + that.data.zhId + '&iftrue=0&n_num=' + that.data.n_num + '&p_money=' + that.data.p_money + '&nd=' + parseInt(1000 * Math.random()) )
     wx.request({
-      url: remoteUrl2 + 'SaveDream/?userid=1&dr_name=怎么是空呢9&dr_money=10000&dr_time=24&in_money=5050&max_hc=-0.06&classid=206&iftrue=0&n_num=12&p_money=80.8&nd=' + parseInt(1000 * Math.random()),
+      url: remoteUrl2 + 'SaveDream/?userid=' + userinfo.id + '&dr_name=' + that.data.desireInp + '&dr_money=' + that.data.total_money + '&dr_time=' + that.data.periods + '&in_money=' + that.data.p_money + '&max_hc=' + that.data.risk + '&classid=' + that.data.zhId + '&iftrue=0&n_num=' + that.data.n_num + '&p_money=' + that.data.p_money + '&nd=' + parseInt(1000 * Math.random()),
       method: 'GET',
       header: {
         'Content-Type': 'application/json'
       },
       success: function (res) {
-        //console.log(res);
+        console.log(res);
         if (res.errMsg =="request:ok")
         {
 

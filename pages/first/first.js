@@ -9,7 +9,7 @@ Page({
    */
   data: {
     imgUrls: ["../../image/banner.png", "../../image/banner2.png"],
-    desire: [{ title: '两年后的旅行', money: '10000', time: 6 }, { title: '六年后的培养', money: '20000', time: 72 }, { title: '存1万块', money: '10000', time: 12 }, { title: '买个LV包', money: '20000', time: 9 },{ title: '买个MacBook', money: '6000', time: 8 }],
+    desire: [{ title: '两年后的旅行', money: '10000', time: 24 }, { title: '六年后的培养', money: '20000', time: 72 }, { title: '存1万块', money: '10000', time: 12 }, { title: '买个LV包', money: '20000', time: 12 },{ title: '买个MacBook', money: '6000', time: 12 }],
     desireInp:"",
     desireMoney:"",
     desiretime:"6",
