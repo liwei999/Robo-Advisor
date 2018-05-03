@@ -1,0 +1,61 @@
+<!--pages/education/education.wxml-->
+<view class="count">
+<view class='mbfont'>出生年月</view>
+<view class="inpview">
+   <picker mode='date' value='{{date}}' end="{{currentDate}}" bindchange="datachange">
+   <view class="inpcenter">{{date}}</view> 
+   </picker>
+</view>
+
+<view class='mbfont mbfont_margin_top'>教育阶段</view>
+<view class="inpview">
+     <view class="grade {{gradeType[0]?'gradeOn':''}}" data-index='0' bindtap='ongrade'>小学</view>
+     <view class="grade {{gradeType[1]?'gradeOn':''}}" data-index='1' bindtap='ongrade'>初中</view>
+     <view class="grade {{gradeType[2]?'gradeOn':''}}" data-index='2' bindtap='ongrade'>高中</view>
+     <view class="grade {{gradeType[3]?'gradeOn':''}}" data-index='3' bindtap='ongrade'>大学</view>
+</view>
+<!-- <view class='target'><text>预计2018年9月达成</text></view> -->
+
+<view class='mbfont mbfont_margin_top'>有无投入资金</view>
+<view class="havemoney">
+ <view class="havemoneyleft {{typeLeft}}" bindtap='bindstyle' data-type='l'>
+ <view class='havetitle'>可投入资金</view>
+ <view class='btnmoney'><input bindinput="moneyInput" placeholder='点击输入金额' placeholder-class='inpmoney' type='number' focus='{{moneyFous}}'></input></view>
+ </view>
+ <view class="havemoneyright {{typeReight}}" bindtap='bindstyle' data-type='r'>
+ <view >暂无金额</view>
+ </view>
+</view>
+
+
+<view class='mbfont mbfont_margin_top'>最大风险承受</view>
+<view class="inpview">
+  <view class='inpleft' bindtap='timereduce' data-time='two'><image src='../../image/minus.png' class='inpimage'></image></view>
+  <view class="inpcount" bindtap='onrisk'><input placeholder-class='inpfont' class='inpclass inpmargin' value='{{riskvalue}}' bindinput="riskInput"  type='number' focus='{{riskFous}}'></input><view>%</view></view>
+  <view class='inpright' bindtap='timeadd' data-time='two'><image src='../../image/Plus.png' class='inpimage'></image></view>
+</view>
+
+
+<view class='mbfont mbfont_margin_top'>每年教育支出</view>
+<view class="inpview inpEduBorder">
+ <view class="grade {{gradeEdu[0]?'gradeOn':''}}" bindtap='onGradeEdu' data-index='0'>国内院校</view>
+ <view class="grade {{gradeEdu[1]?'gradeOn':''}}" bindtap='onGradeEdu' data-index='1'>国外院校</view>
+</view>
+<view class="inpview">
+    <!-- <view class="inpcenter"><input>{{desireMoney}}</input> <text>元</text></view>  -->
+
+    <view class="inpcount" bindtap='onmoney'>
+    <!-- bindinput="moneyInput" -->
+    <input placeholder-class='inpfont' class='inpQwMoney' value='{{desireMoney}}'   type='number' focus='{{wishMoneyFous}}' bindinput='inpWishMoney'></input>
+    <view class='inpmoneyDw'>元</view>
+    </view>
+</view>
+
+<view class='slider' >
+<slider max='200000' min='0' value='{{desireMoney}}' backgroundColor="#ACE5FF" activeColor="#38B7F2" block-size="20" block-color="#38B7F2" bindchange='onslider' show-value='true'></slider>
+</view>
+
+
+<button class="btn" bindtap='next_step'>我的专属方案</button>
+</view>
+

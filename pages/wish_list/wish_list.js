@@ -46,7 +46,8 @@ Page({
       //   " yesterdayEarning": "0.56",
       //   "addEarning": "66.42"
       // }
-    ]
+    ],
+    imagesrc: ["../../image/1.png", "../../image/2.png", "../../image/3.png"]
   }
   ,
   /**

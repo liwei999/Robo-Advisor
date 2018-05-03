@@ -10,6 +10,26 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
+//格式化时间改造 x分隔 y是否显示时分秒
+
+ const formatTime1 = (date,x='/',y=true) => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+  if(y)
+  { 
+    return [year, month, day].map(formatNumber).join(x) + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  }
+  else
+  {
+    return [year, month, day].map(formatNumber).join(x)
+  }
+  
+}
+
 
 const formatNumber = n => {
   n = n.toString()
@@ -28,6 +48,7 @@ module.exports = {
   SetLoginedGoBack: SetLoginedGoBack,
   GetLoginedGoBacKStatus: GetLoginedGoBacKStatus,
   CheckRiskTest:CheckRiskTest,
+  formatTime1: formatTime1
 }
 
 //显示提示

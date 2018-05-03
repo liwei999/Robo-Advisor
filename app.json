@@ -19,7 +19,9 @@
     "pages/login/login",
     "pages/wish_detailed/wish_detailed",
     "pages/auto_buy/auto_buy",
-    "pages/accelerate/accelerate"
+    "pages/accelerate/accelerate",
+    "pages/pension/pension",
+    "pages/education/education"
   ],
   "window": {
     "backgroundTextStyle": "light",

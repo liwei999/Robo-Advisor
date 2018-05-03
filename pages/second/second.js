@@ -132,7 +132,7 @@ Page({
     var that = this;
     if (e.currentTarget.dataset.time=="one")
     {
-      var time = that.data.timevalue >= 6 ? parseInt(that.data.timevalue)-6: 0;
+      var time = that.data.timevalue >6 ? parseInt(that.data.timevalue)-6: 6;
       that.setData({ timevalue: time});      
     }
     else

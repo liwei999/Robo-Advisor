@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": false,
 		"minified": false,
@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.91",
 	"appid": "wxd77250297c6d7afa",
-	"projectname": "%E5%BE%B7%E5%9C%A3%E6%99%BA%E6%8A%95",
+	"projectname": "%E7%BD%91%E4%BF%A1%E6%99%BA%E6%8A%95",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -83,6 +83,42 @@
 					"id": -1,
 					"name": "bar",
 					"pathName": "pages/bar/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "历史调仓",
+					"pathName": "pages/history/history",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "加速实现心愿",
+					"pathName": "pages/accelerate/accelerate",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "心愿单",
+					"pathName": "pages/wish_list/wish_list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "心愿单详细",
+					"pathName": "pages/wish_detailed/wish_detailed",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的养老规划",
+					"pathName": "pages/pension/pension",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的教育规划",
+					"pathName": "pages/education/education",
 					"query": ""
 				}
 			]

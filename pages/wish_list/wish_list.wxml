@@ -6,7 +6,9 @@
 </view>
 <view class="two" bindtap='on_detailed' wx:for="{{target}}" wx:for-index="index" wx:for-item="item">
   <view class='first'>
-    <view class="first_image"></view>
+    <view class="first_image">
+    <image src='{{imagesrc[index%3]}}'></image>
+    </view>
      <view class="first_content">
        <view class='first_content_name'>{{item.name}}</view>
        <view class='first_content_money'>已完成金额(元)	{{item.complete}}/{{item.allmoney}}</view>

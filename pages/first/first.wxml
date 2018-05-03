@@ -3,7 +3,7 @@
     <swiper indicator-dots='true' autoplay='true' interval='5000' duration='400'>
     <block wx:for="{{imgUrls}}" wx:for-index="index" wx:key="{{index}}">
     <swiper-item>
-    <image src='{{item}}' class="imagetop"></image>
+    <image src='{{item}}' class="imagetop" bindtap='onWish' data-index='{{index}}'></image>
     </swiper-item>
     </block>
     
