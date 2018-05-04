@@ -35,20 +35,20 @@
     "backgroundColor": "#fff",
     "list": [
       {
-        "selectedIconPath": "image/tempselect.png",
-        "iconPath": "image/temp.png",
+        "selectedIconPath": "image/wishsolid.png",
+        "iconPath": "image/wishhollow.png",
         "pagePath": "pages/wish_list/wish_list",
         "text": "心愿单"
       },
       {
-        "selectedIconPath": "image/tempselect.png",
-        "iconPath": "image/temp.png",
+        "selectedIconPath": "image/Lifesolid.png",
+        "iconPath": "image/Lifehollow.png",
         "pagePath": "pages/interest_circle/interest_circle",
-        "text": "兴趣圈"
+        "text": "生活圈"
       },
       {
-        "selectedIconPath": "image/tempselect.png",
-        "iconPath": "image/temp.png",
+        "selectedIconPath": "image/Setsolid.png",
+        "iconPath": "image/Sethollow.png",
         "pagePath": "pages/setup/setup",
         "text": "设置"
       }

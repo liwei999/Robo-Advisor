@@ -55,14 +55,14 @@ Page({
    */
   onLoad: function (options) {
     //获取用户id
-    // var userinfo = util.GetUserInfo();
-    // console.log(userinfo)
-    // if (userinfo!=null)
-    // {
-    //   var userid = util.GetUserInfo().id;
-    //   console.log(userid);
-    //   this.getDreamList(userid);
-    // }
+    var userinfo = util.GetUserInfo();
+    console.log(userinfo)
+    if (userinfo!=null)
+    {
+      var userid = util.GetUserInfo().id;
+      console.log(userid);
+      this.getDreamList(userid);
+    }
   },
 
   /**
@@ -104,13 +104,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var userinfo = util.GetUserInfo();
-    console.log(userinfo)
-    if (userinfo != null) {
-      var userid = util.GetUserInfo().id;
-      console.log(userid);
-      this.getDreamList(userid);
-    }
+    // var userinfo = util.GetUserInfo();
+    // console.log(userinfo)
+    // if (userinfo != null) {
+    //   var userid = util.GetUserInfo().id;
+    //   console.log(userid);
+    //   this.getDreamList(userid);
+    // }
   },
 
   /**

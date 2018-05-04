@@ -621,7 +621,7 @@ Page({
     that.setData({ hiddenLoading: false });
     // console.log(remoteUrl2 + 'SaveDream/?userid=' + userinfo.id + '&dr_name=' + that.data.desireInp + '&dr_money=' + that.data.total_money + '&dr_time=' + that.data.periods + '&in_money=' + that.data.p_money + '&max_hc=' + that.data.risk + '&classid=' + that.data.zhId + '&iftrue=0&n_num=' + that.data.n_num + '&p_money=' + that.data.p_money + '&nd=' + parseInt(1000 * Math.random()) )
     wx.request({
-      url: remoteUrl2 + 'SaveDream/?userid=' + userinfo.id + '&dr_name=' + that.data.desireInp + '&dr_money=' + that.data.total_money + '&dr_time=' + that.data.periods + '&in_money=' + that.data.p_money + '&max_hc=' + that.data.risk + '&classid=' + that.data.zhId + '&iftrue=0&n_num=' + that.data.n_num + '&p_money=' + that.data.p_money + '&nd=' + parseInt(1000 * Math.random()),
+      url: remoteUrl2 + 'SaveDream/?userid=' + userinfo.id + '&dr_name=' + that.data.desireInp + '&dr_money=' + that.data.total_money + '&dr_time=' + that.data.periods + '&in_money=' + that.data.start_invest + '&max_hc=' + that.data.risk + '&classid=' + that.data.zhId + '&iftrue=0&n_num=' + that.data.n_num + '&p_money=' + that.data.p_money + '&nd=' + parseInt(1000 * Math.random()),
       method: 'GET',
       header: {
         'Content-Type': 'application/json'
@@ -631,25 +631,27 @@ Page({
         if (res.errMsg =="request:ok")
         {
 
-          {
-            wx.switchTab({
-              url: '../wish_list/wish_list',
-            });
-          }
-          // var userinfo = util.GetUserInfo()
-          // if (userinfo && userinfo.id) {
-          //   var pages = getCurrentPages();
-          //   var prePage = pages[pages.length - 4];
-          //   //console.log(prePage);
-          //   wx.navigateBack({ delta: 3 });
-          //   prePage.getDreamList(userinfo.id);
-          // }
-          // else
           // {
           //   wx.switchTab({
           //     url: '../wish_list/wish_list',
           //   });
           // }
+          // var userinfo = util.GetUserInfo()
+          if (userinfo && userinfo.id) {
+            if (!getApp().globalData.firstLogin) {
+            var pages = getCurrentPages();
+            var prePage = pages[pages.length - 4];
+            //console.log(prePage);
+            wx.navigateBack({ delta: 3 });
+            prePage.getDreamList(userinfo.id);
+            }
+            else {
+              wx.switchTab({
+                url: '../wish_list/wish_list',
+              });
+            }
+          }
+          
           
         }
         else
