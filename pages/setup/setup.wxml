@@ -38,7 +38,11 @@
 <view>意见反馈</view>
 <view>></view>
 </view>
-<view class="item" bindtap="unsubscribeEvent">
+<view class="item" bindtap='clearData'>
+<view>清除数据</view>
+<view>></view>
+</view>
+<view class="item space" bindtap="unsubscribeEvent">
 <view>退出登录</view>
 <view>></view>
 </view>

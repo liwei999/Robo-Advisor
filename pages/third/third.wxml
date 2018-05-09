@@ -3,7 +3,8 @@
 <loading hidden="{{hiddenLoading}}">数据加载中...</loading>
 <view class="count">
  <view class='count_title'>期望收益</view>
- <view class="first_char" hidden="{{hideBarChart}}">
+ <!-- hidden="{{hideBarChart}}" -->
+ <view class="first_char" >
  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
  <!-- <image src='../../image/t1.png'></image> -->
  </view>
@@ -16,9 +17,9 @@
 <view class="count third">
 <view class='count_title'>历史走势</view>
 
- <view class="third_char" hidden="{{hideLineChart}}">
-   <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec_line }}"></ec-canvas>  
-   <!-- <image src='../../image/t2.png'></image>  -->
+ <view class="third_char">
+   <!-- <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec_line }}"></ec-canvas>   -->
+   <image src='{{imageSrc[1]}}'></image>
  </view>
 </view>
 
@@ -42,53 +43,66 @@
 <view class='four' id="bt_buy"> <button bindtap='onclickbuy' data-status="1">立即购买</button> <button bindtap='onclickmain' >专属心愿计划</button></view>
 
 
-<view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
-<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
-<view class='menu_title'><text>选择银行卡</text><icon class="icon-small" size="23" type="cancel" bindtap="setModalStatus" data-status="0"></icon></view>
-<view style='display:{{hiddenarr[0]}};'>
-<view class="list_item">
-  <view class='item'>
+<cover-view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></cover-view>
+<cover-view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+<cover-view class='menu_title'><cover-view>选择银行卡</cover-view>
+<!-- <icon class="icon-small" size="23" type="cancel" bindtap="setModalStatus" data-status="0"></icon> -->
+<cover-image bindtap="setModalStatus" data-status="0" src='../../image/del.png' style='width:27rpx;height:27rpx;'></cover-image>
+</cover-view>
+<cover-view style='display:{{hiddenarr[0]}};'>
+<cover-view class="list_item">
+  <cover-view class='item'>
   2000000
-  </view>
-
-  <view class='item_bank'>
-    <view class='bank_icon'><image src='../../image/CMB.png'></image></view>
-    <view class='bank_text'>
+  </cover-view>
+ <cover-view class="line"></cover-view>
+  <cover-view class='item_bank'>
+    <cover-view class='bank_icon'><cover-image src='../../image/CMB.png'></cover-image></cover-view>
+    <cover-view class='bank_text'>
     招商银行储蓄卡(0000)
-    </view>
-    <view class='bank_ok'>
-    <image src='../../image/tick.png'></image>
-    </view>
+    </cover-view>
+    <cover-view class='bank_ok'>
+    <cover-image src='../../image/tick.png'></cover-image>
+    </cover-view>
     <!-- <icon type='success_no_circle' size="22"></icon> -->
-  </view>
+  </cover-view>
+   
+  <cover-view class="line"></cover-view>
 
-
-<view class='item_bank' bindtap='on_addbank'>
-  <view class='bank_icon'><image src='../../image/card.png'></image></view>
-  <view class='add_text'>
+<cover-view class='item_bank' bindtap='on_addbank'>
+  <cover-view class='bank_icon'><cover-image src='../../image/card.png'></cover-image></cover-view>
+  <cover-view class='add_text'>
       添加银行卡
-  </view>
-</view>
+  </cover-view>
+</cover-view>
 
-</view>
-<view class="three"><button class="btn" bindtap='next_step'>确认购买</button></view>
-</view>
+<cover-view class="line"></cover-view>
+
+</cover-view>
+
+</cover-view>
+
+<cover-view class="three" style='display:{{hiddenarr[0]}};'>
+<!-- <button class="btn" bindtap='next_step'>确认购买</button> -->
+<cover-view class="btn" bindtap='next_step'>确认购买</cover-view>
+</cover-view>
 
 
-
-<view style='display:{{hiddenarr[1]}};'>
-<view class="list_Prompt">
-  <view class='item_Prompt'>
+<cover-view style='display:{{hiddenarr[1]}};'>
+<cover-view class="list_Prompt">
+  <cover-view class='item_Prompt'>
   买入金额超过银行卡支付最高限额，可选择分笔自动买入或重新选择银行卡
-  </view>
-</view>
-<view class="three prompt">
-<button class="btn_l" bindtap='next_up'>上一步</button>
-<button class="btn_r" bindtap='next_fb'>分笔自动买入</button>
-</view>
-</view>
+  </cover-view>
+  <cover-view class="line"></cover-view>
+</cover-view>
+
+</cover-view>
+<cover-view class="three prompt" style='display:{{hiddenarr[1]}}'>
+<!-- <button class="btn_l" bindtap='next_up'>上一步</button>
+<button class="btn_r" bindtap='next_fb'>分笔自动买入</button> -->
+<cover-view class="btn_l" bindtap='next_up'>上一步</cover-view>
+<cover-view class="btn_r" bindtap='next_fb'>分笔自动买入</cover-view>
+</cover-view>
 
 
 
-
-</view>
+</cover-view>

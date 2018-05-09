@@ -13,8 +13,8 @@
        <view class='first_content_name'>{{item.name}}</view>
        <view class='first_content_money'>已完成金额(元)	{{item.complete}}/{{item.allmoney}}</view>
        <view class='first_content_money'>
-           <view class='first_bg' style='margin-left:-76rpx;left:{{( item.complete/item.allmoney)*100}}%'><image src='../../image/bg.png' style='width:100%;height:100%;' ></image><text>{{(item.complete/item.allmoney)*100}}%</text></view>
-          <progress percent="{{( item.complete/item.allmoney)*100}}" color="#19A7E9" backgroundColor="#CDE6F1" active="true"></progress>
+           <view class='first_bg' style='margin-left:-76rpx;left:{{item.bl}}%'><image src='../../image/bg.png' style='width:100%;height:100%;' ></image><text>{{item.bl}}%</text></view>
+          <progress percent="{{item.bl}}" color="#19A7E9" backgroundColor="#CDE6F1" active="true"></progress>
        </view>
        <view class="first_content_money">{{item.time}}</view>
      </view>

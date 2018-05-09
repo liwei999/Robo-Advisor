@@ -21,7 +21,8 @@
     "pages/auto_buy/auto_buy",
     "pages/accelerate/accelerate",
     "pages/pension/pension",
-    "pages/education/education"
+    "pages/education/education",
+    "pages/lifeCircleDetails/lifeCircleDetails"
   ],
   "window": {
     "backgroundTextStyle": "light",

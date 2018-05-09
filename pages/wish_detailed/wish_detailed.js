@@ -1,11 +1,78 @@
 // pages/wish_detailed/wish_detailed.js
+import * as echarts from '../../ec-canvas/echarts';
+
+function initChart(canvas, width, height) {
+  const chart = echarts.init(canvas, null, {
+    width: width,
+    height: height
+  });
+  canvas.setChart(chart);
+
+  var option = {
+    // backgroundColor: "#ffffff",
+    //color: ["#37A2DA", "#32C5E9", "#67E0E3"],
+    series: [{
+      // name: '业务指标',
+      center: ["50%", "85%"],// 仪表位置
+      radius: '168%',//仪表大小
+      type: 'gauge',
+      startAngle:190,
+      endAngle:-10,
+      detail: {
+        formatter: '{value}%',
+        offsetCenter:[0,'10%'],
+        fontSize:20
+      },
+      pointer:{
+        width: 1,//指针宽度。
+        length:'70%',
+      },
+     //轴线相关配置
+      axisLine: {
+        show: true,
+        lineStyle: {
+          width: 10,
+          shadowBlur: 0,
+          color: [
+            [1, '#FF8D3B']
+          ]
+        }
+      },
+      //刻度样式。
+      axisTick: {
+        show: false
+      },
+      splitLine:{
+        show:true,
+        lineStyle: {
+          color: '#F0F6F9',
+        }
+      },
+      axisLabel:{
+        show: true,
+      },
+      data: [{
+        value: 50,
+        //name: '完成率',
+      }]
+
+    }]
+  };
+
+  chart.setOption(option, true);
+
+  return chart;
+}
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    ec: {
+      onInit: initChart
+    }
   },
 
   /**
@@ -19,7 +86,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    
   },
 
   /**

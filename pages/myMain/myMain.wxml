@@ -9,20 +9,21 @@
   <swiper current="{{currentTab}}" class="swiper-box" duration="0" bindchange="bindChange">
     <!-- 收益表现 -->
     <swiper-item>
-    <view style='width:100%; height:100%;display:{{hidden_arr[0]?"block":"none"}};'>
-       <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec_line }}" style='width:{{width}}' ></ec-canvas>  
+    <view style='width:100%; height:100%; padding-top:2rpx;display:{{hidden_arr[0]?"block":"none"}};'>
+       <!-- <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec_line }}" style='width:{{width}}' ></ec-canvas>   -->
+       <image src='{{imageSrc[0]}}' class='zxtsy'></image>
     </view>
     </swiper-item>
     <!-- 回撤走势 -->
     <swiper-item>
-    <view style='width:100%; height:100%;display:{{hidden_arr[1]?"block":"none"}};'>
-    回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势回撤走势
+    <view style='width:100%; height:100%;padding-top:2rpx;display:{{hidden_arr[1]?"block":"none"}};'>
+     <image src='{{imageSrc[1]}}' class='zxtsy'></image>
     </view>
     </swiper-item>
     <!-- 月投收益 -->
     <swiper-item>
-    <view style='width:100%; height:100%;display:{{hidden_arr[2]?"block":"none"}};'>
-    月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益月投收益
+    <view style='width:100%; height:100%;padding-top:2rpx;display:{{hidden_arr[2]?"block":"none"}};'>
+    <image src='{{imageSrc[2]}}' class='zxtsy'></image>
     </view>
       
     </swiper-item>
@@ -56,8 +57,8 @@
 
 <view class='first two'>
  <view class='two_class'>组合配置</view>
-  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ec_bar}}"></ec-canvas>
-  <image src='../../image/temp2.png' style='width:690rpx; height:460rpx;display:none'></image>
+  <!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ec_bar}}"></ec-canvas> -->
+  <image src='{{imageSrc[3]}}' mode='widthFix' style='width:690rpx;height:460rpx;'></image>
 </view>
 
 <view class='first three'>
@@ -88,13 +89,14 @@
 </view>
 
 <view class='first four_foot'>
- <view bindtap='click_history'>
- <image src='../../image/temp7.png' style="width:100%; height:100%;"></image>
+ <view bindtap='click_history' class='history'>
+ <image src='../../image/History.png' style="width:40rpx; height:40rpx;"></image>
+ <view class='history_btn'>历史调仓</view>
  </view>
- <view bindtap='onclickbuy' data-status="1">立即购买</view>
+ <view bindtap='onclickbuy' data-status="1" class='history_buy'>立即购买</view>
 </view>
 
-<view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
+<!-- <view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
 <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
 <view class='menu_title'><text>选择购买方式</text><icon class="icon-small" size="23" type="cancel" bindtap="setModalStatus" data-status="0"></icon></view>
 <view class="list_item">
@@ -111,7 +113,56 @@
   <view>
    添加银行卡
   </view>
-  <!-- <icon type='success_no_circle' size="22"></icon> -->
+
   </view>
+</view>
+</view> -->
+
+
+
+<view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+<view class='menu_title'><text>选择银行卡</text><icon class="icon-small" size="23" type="cancel" bindtap="setModalStatus" data-status="0"></icon></view>
+<view style='display:{{hiddenarr[0]}};'>
+<view class="list_item">
+  <view class='item'>
+  2000000
+  </view>
+
+  <view class='item_bank'>
+    <view class='bank_icon'><image src='../../image/CMB.png'></image></view>
+    <view class='bank_text'>
+    招商银行储蓄卡(0000)
+    </view>
+    <view class='bank_ok'>
+    <image src='../../image/tick.png'></image>
+    </view>
+    <!-- <icon type='success_no_circle' size="22"></icon> -->
+  </view>
+
+
+<view class='item_bank' bindtap='on_addbank'>
+  <view class='bank_icon'><image src='../../image/card.png'></image></view>
+  <view class='add_text'>
+      添加银行卡
+  </view>
+</view>
+
+</view>
+<view class="three_list"><button class="btn" bindtap='next_step'>确认购买</button></view>
+</view>
+
+
+
+<view style='display:{{hiddenarr[1]}};'>
+<view class="list_Prompt">
+  <view class='item_Prompt'>
+  买入金额超过银行卡支付最高限额，可选择分笔自动买入或重新选择银行卡
+  </view>
+</view>
+<view class="three_list prompt">
+<button class="btn_l" bindtap='next_up'>上一步</button>
+<button class="btn_r" bindtap='next_fb'>分笔自动买入</button>
+</view>
 </view>
 </view>

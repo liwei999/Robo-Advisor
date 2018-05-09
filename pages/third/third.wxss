@@ -61,24 +61,26 @@ page{background-color: #F0F6F9; display: flex; flex-direction: column;}
 
 .menu_title{font-size: 36rpx;color: #000000;padding-top: 27rpx; padding-bottom: 27rpx; text-align: center; border: solid 1px #d9d9d9; display:flex;
 align-items:center;
-justify-content:center;
+justify-content:space-between;
 }
-.menu_title icon{position: absolute; right: 30rpx;}
+.menu_title cover-view{flex: 9;}
+.menu_title cover-image{position: absolute; right: 30rpx;}
 /*银行卡 开始  */
 .item{border-bottom: 1rpx solid #E1E6E9;color: #000000; margin-left: 20rpx;padding: 46rpx 0; text-align: center;font-size: 72rpx;}
-.item_bank{border-bottom: 1rpx solid #E1E6E9;margin-left: 20rpx; display: flex;flex-direction: row; height: 120rpx;justify-content:space-between; align-items: center;}
+.item_bank{margin-left: 20rpx; display: flex;flex-direction: row; height: 120rpx;justify-content:space-between; align-items: center;}
+.line{height: 1rpx;background-color: #E1E6E9;margin-left: 20rpx;}
 .bank_ok{ width: 30rpx; height: 30rpx; flex: 1;}
 .bank_icon{width: 50rpx; height: 50rpx; flex: 1;}  
-.bank_icon image{width: 50rpx;height: 50rpx;}
-.bank_ok image{width: 30rpx; height: 30rpx;}
+.bank_icon cover-image{width: 50rpx;height: 50rpx;}
+.bank_ok cover-image{width: 30rpx; height: 30rpx;}
 .bank_text{font-size: 32rpx; flex:8;}
-.add_text{flex: 9;}
+.add_text{flex: 9;font-size: 32rpx;}
 /*银行卡 结束  */
 
 /* 支付提醒 开始*/
-.item_Prompt{border-bottom: 1rpx solid #E1E6E9;color: #000000; margin-left: 20rpx;padding: 67rpx 152rpx; font-size: 24rpx; display: flex;justify-content: center;}
-.prompt{display: flex;flex-direction:row;justify-content:space-between; margin-bottom: 60rpx;}
-.prompt button{ width: 280rpx;height:80rpx; font-size: 32rpx;}
+.item_Prompt{color: #000000; margin-left: 20rpx;padding: 67rpx 152rpx; font-size: 24rpx; display: flex;justify-content: center;white-space: pre-line;}
+.prompt{display: flex;flex-direction:row;justify-content:space-around; margin-bottom: 60rpx;}
+.prompt cover-view{ width: 280rpx;height:80rpx; font-size: 32rpx;border-radius: 10rpx; border: #888888 1rpx solid; text-align: center; line-height: 80rpx;}
 .btn_l{background-color: #fff;border: #888888; color: #888888}
 .btn_r{background-color: #888888;color: #FFFFFF;}
 /* 支付提醒 结束*/
@@ -93,8 +95,8 @@ justify-content:left;height: 120rpx;}
 .item_cen{font-size: 28rpx;color: #888888; } */
 
 
-.three{ position:  absolute; bottom: 0rpx; width: 100%;}
- .btn{background-color: #19A7E9;color: #FFFFFF;font-size: 32rpx; margin-right: 60rpx; margin-bottom: 80rpx;margin-left: 60rpx;} 
+.three{ position:  absolute; bottom: 0rpx; width: 100%;} 
+.btn{background-color: #19A7E9;color: #FFFFFF;font-size: 32rpx; margin-right: 60rpx; margin-bottom: 80rpx;margin-left: 60rpx; height: 80rpx;text-align: center;border-radius: 10rpx; line-height: 80rpx;} 
 /**
 下边列表 结束
 */

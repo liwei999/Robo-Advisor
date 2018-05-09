@@ -42,6 +42,7 @@ App({
     RiskTestGoBack: false,  //测评后路回第三页
     firstLogin:true,  //是否首次登录
     remoteUrl1: 'https://221.dsfof.com.cn/webservice/',    //远程数据接口1
-    remoteUrl2: 'https://221.dsfof.com.cn/py/'    //远程数据接口2
+    remoteUrl2: 'https://221.dsfof.com.cn/py/',    //远程数据接口2
+    remoteUrl3: 'https://221.dsfof.com.cn/'    //远程数据接口3
   }
 })

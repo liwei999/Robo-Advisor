@@ -26,6 +26,8 @@ page{background-color: #F0F6F9; display: flex; flex-direction: column; }
     text-align: center;  
 }
 
+.zxtsy{width: 100%; height: 100%;}
+
 .first_tab{font-size: 28rpx;color: #19A7E9;display: flex;flex-direction: row; border-radius: 10rpx;border: 1rpx solid #19A7E9; margin: 0rpx 30rpx 30rpx 30rpx;}
 .first_tab view{padding:13rpx 0 13rpx 0; flex: 1; text-align: center;}
 .first_tab_on{background-color: #19A7E9;color: #fff;}
@@ -52,8 +54,11 @@ page{background-color: #F0F6F9; display: flex; flex-direction: column; }
 
 
 .four_foot{display: flex;flex-direction: row; height: 98rpx; width: 100%; position:fixed; bottom: 0rpx;}
-.four_foot view:first-child{display: flex;flex-direction:column; font-size: 24rpx;color: #7199AB;flex: 2;}
-.four_foot view:last-child{flex: 4; background-color: #19A7E9;color: #fff;text-align: center;line-height: 98rpx;}
+.four_foot .history{display: flex;flex-direction:column; font-size: 24rpx;color: #7199AB;flex: 2; background-color: #fff; justify-content: center; align-items: center;}
+
+.four_foot .history_buy{flex: 4; background-color: #19A7E9;color: #fff;text-align: center;line-height: 98rpx;}
+
+.history_btn{padding-top: 10rpx;}
 
 .orange{color:#FF502E!important;}
 .green{color:#35C18B!important;}
@@ -94,15 +99,30 @@ align-items:center;
 justify-content:center;
 }
 .menu_title icon{position: absolute; right: 30rpx;}
-.item{border-bottom: 1px solid #E1E6E9;font-size:32rpx;color: #000000; margin-left: 20rpx;}
-.item:first-child{display: flex; flex-direction: row; align-items:center;
-justify-content:left;height: 160rpx;}
-.item:first-child icon{ margin-right: 30rpx;}
-.item:last-child{display: flex; flex-direction: row; align-items:center;
-justify-content:left;height: 120rpx;}
+/*银行卡 开始  */
+.item{border-bottom: 1rpx solid #E1E6E9;color: #000000; margin-left: 20rpx;padding: 46rpx 0; text-align: center;font-size: 72rpx;}
+.item_bank{border-bottom: 1rpx solid #E1E6E9;margin-left: 20rpx; display: flex;flex-direction: row; height: 120rpx;justify-content:space-between; align-items: center;}
+.bank_ok{ width: 30rpx; height: 30rpx; flex: 1;}
+.bank_icon{width: 50rpx; height: 50rpx; flex: 1;}  
+.bank_icon image{width: 50rpx;height: 50rpx;}
+.bank_ok image{width: 30rpx; height: 30rpx;}
+.bank_text{font-size: 32rpx; flex:8;}
+.add_text{flex: 9;}
+/*银行卡 结束  */
+
+/* 支付提醒 开始*/
+.item_Prompt{border-bottom: 1rpx solid #E1E6E9;color: #000000; margin-left: 20rpx;padding: 67rpx 152rpx; font-size: 24rpx; display: flex;justify-content: center;}
+.prompt{display: flex;flex-direction:row;justify-content:space-between; margin-bottom: 60rpx;}
+.prompt button{ width: 280rpx;height:80rpx; font-size: 32rpx;}
+.btn_l{background-color: #fff;border: #888888; color: #888888}
+.btn_r{background-color: #888888;color: #FFFFFF;}
+/* 支付提醒 结束*/
+
+.three_list{ position:  absolute; bottom: 0rpx; width: 100%;}
+.btn{background-color: #19A7E9;color: #FFFFFF;font-size: 32rpx; margin-right: 60rpx; margin-bottom: 80rpx;margin-left: 60rpx;} 
 
 
 /**
-下边列表 结束
+下边列表 结束 
 */
 

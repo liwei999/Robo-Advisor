@@ -1,16 +1,33 @@
 <!--pages/wish_detailed/wish_detailed.wxml-->
 <view class="one">
-  <image src='../../image/temp21.png' style='width:100%;height:100%;'></image>
+  <!-- <image src='../../image/temp21.png' style='width:100%;height:100%;'></image> -->
 </view>
 <view class="two">
-  <image src="../../image/temp22.png" style='width:100%;height:100%;'></image>
+  <!-- <image src="../../image/temp27.png" style='width:100%;height:100%;'></image> -->
+  <ec-canvas id="mychart-dom-gauge" canvas-id="mychart-gauge" ec="{{ ec }}"></ec-canvas>
+</view>
+<view class='three'>
+  <view class='three_money'>已存入金额(元)</view>
+  <view class='three_wish'>心愿计划</view>
 </view>
 
+ <view class='five'>
+   <view class='five_l'>
+    <view class='five_title'>累计收益(元)</view>
+    <view class='five_con'>66.48</view>
+   </view>
+   <view class='five_r'>
+    <view class='five_title'>预计2020年3月达成(元)</view>
+    <view class='five_con'>1,000,000</view>
+   </view>
+</view> 
+
 <view class='four_foot'>
- <view bindtap='click_more' data-status="1">
-      更多
+ <view bindtap='click_more' data-status="1" class="four_foot_first">
+  <image src='../../image/more.png'></image> 
+  <view>更多</view>
  </view>
- <view bindtap='click_accelerate'>加速实现心愿</view>
+ <view bindtap='click_accelerate' class="four_foot_last">加速实现心愿</view>
 </view>
 
 

@@ -126,6 +126,7 @@ function getLineOption(navDate, dailyReturn1, dailyReturn2){
 var lineChart=null;
 var remoteUrl1 = getApp().globalData.remoteUrl1;  
 var remoteUrl2 = getApp().globalData.remoteUrl2;  
+var remoteUrl3 = getApp().globalData.remoteUrl3;
 var buyButton=null;
 Page({
   /**
@@ -150,9 +151,10 @@ Page({
     ec: {
       lazyLoad:true
     },
-    ec_line: {
-      lazyLoad: true
-    },
+    // ec_line: {
+    //   lazyLoad: true
+    // },
+    imageSrc:[],
     isLoaded: false,
     isDisposed: false,
     hiddenarr:["block","none"]
@@ -241,7 +243,8 @@ Page({
             //that.setData({ hiddenLoading: true });
 
             //绑定组合折线图
-            that.getCharData(res.data.zhid,'','',3);
+            //that.getCharData(res.data.zhid,'','',3);
+            that.setData({ imageSrc: ['', remoteUrl3 + '/img/getsyl' + res.data.zhid+'_60.jpeg']});
 
             //绑定组合风险收益数据
             that.GetRiskData(res.data.zhid, that.data.periods)
@@ -260,7 +263,7 @@ Page({
         util.toast("请求失败！");
       },
       complete: function (res) {
-
+        that.setData({ hiddenLoading: true });
       }
     })
   },
@@ -475,7 +478,7 @@ Page({
         return
       }
       //弹出购买窗口
-      this.setData({ hiddenarr: ["display", "none"] });
+      this.setData({ hiddenarr: ["block", "none"] });
       this.setModalStatus(e);
     }
     else
@@ -507,12 +510,12 @@ Page({
     var that =this;
     console.log("设置显示状态，1显示0不显示", e.currentTarget.dataset.status);
     var animation = wx.createAnimation({
-      duration: 200,
+      duration: 2000,
       timingFunction: "linear",
       delay: 0
     })
     this.animation = animation
-    animation.translateY(300).step()
+    //animation.translate(300).step()
 
     this.setData({
       animationData: animation.export()
@@ -522,7 +525,7 @@ Page({
       this.setData(
         {
           showModalStatus: true,
-          hideLineChart:true,
+          //hideLineChart:true,
           hideBarChart:true
         }
       );
@@ -566,11 +569,11 @@ Page({
    */
   next_step:function(){
      //判断扣款金额是不是大于5万，
-    this.setData({ hiddenarr:["none","display"]});
+    this.setData({ hiddenarr:["none","flex"]});
   },
   onclickmain:function(){
     wx.navigateTo({
-      url: '../myMain/myMain',
+      url: '../myMain/myMain?zhId=' + this.data.zhId + '&p_money=' + this.data.p_money + '&n_num=' + this.data.n_num + '&total_money=' + this.data.total_money + '&start_invest=' + this.data.start_invest + '&periods=' + this.data.periods + '&risk_parameter=' + this.data.risk + '&desireInp=' + this.data.desireInp,
     })
   },
   /**
@@ -704,7 +707,8 @@ Page({
    */
   next_up:function(e)
   {
-    this.setData({ hiddenarr: ["display", "none"] });
+    //this.setData({ hiddenarr: ["none", "none"] });
+    this.setData({ hiddenarr: ["block", "none"] });
   }
 
 })

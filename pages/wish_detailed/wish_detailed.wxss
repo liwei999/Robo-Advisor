@@ -1,10 +1,29 @@
 /* pages/wish_detailed/wish_detailed.wxss */
 page{background-color: #F0F6F9; display: flex; flex-direction: column;}
-.one{height: 300rpx;}
-.two{ padding: 41rpx 53rpx 0 53rpx;height: 641rpx;}
-.four_foot{display: flex;flex-direction: row; height: 98rpx; position: absolute;width: 100%; bottom: 0;font-size: 32rpx; background-color: #fff;}
-.four_foot view:first-child{display: flex;flex-direction:column;color: #7199AB;flex: 1;text-align: center;line-height: 98rpx;}
-.four_foot view:last-child{flex: 2; background-color: #19A7E9;color: #fff;text-align: center;line-height: 98rpx;}
+.one{height: 340rpx; background:url('https://221.dsfof.com.cn/webservice/image/banner_wish.png') no-repeat;}
+.two{ margin:60rpx 0rpx 13rpx 0rpx; height:350rpx;}
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+.three{
+  font-size: 24rpx;display: flex;flex-direction: row;
+}
+.three view{flex: 1; margin-top: 12rpx;}
+.three_money{ color: #AEAEAE;text-align: right;padding-right: 25rpx;border-right: 2rpx solid #CCCCCC}
+.three_wish{ color: #19A7E9;text-align: left; padding-left: 25rpx;}
+
+.five{margin: 24rpx 62rpx; background-color: #fff;padding: 30rpx 0;display: flex;flex-direction: row;}
+.five_l{flex: 1; border-right: 2rpx solid #CCCCCC;padding-left: 35rpx;}
+.five_r{flex: 1;padding-left: 35rpx;}
+.five_title{font-size: 24rpx;color: #888888;}
+.five_con{color: #000000;font-size: 32rpx; margin-top: 30rpx;}
+
+.four_foot{display: flex;flex-direction: row; height: 98rpx; position:fixed;width: 100%; bottom: 0;font-size: 32rpx; background-color: #fff;}
+.four_foot_first{display: flex;flex-direction:column;color: #7199AB;flex: 1;text-align: center; align-items: center;justify-content: center; font-size: 24rpx;}
+.four_foot_first image{width: 40rpx; height: 10rpx;display: flex;}
+.four_foot_first view{margin-top: 16rpx;}
+.four_foot_last{flex: 2; background-color: #19A7E9;color: #fff;text-align: center;line-height: 98rpx;}
 
 
 

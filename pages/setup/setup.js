@@ -102,5 +102,25 @@ Page({
     wx.navigateTo({
       url: '../riskAssessment/riskAssessment',
     })
+  },
+  /**
+   * 清除数据
+   */
+  clearData:function(){
+    try {
+      wx.clearStorageSync();
+      wx.showToast({
+        title: '清除成功',
+        icon: 'none'
+      });
+      wx.redirectTo({
+        url: '../first/first'
+      });
+    } catch (e) {
+      wx.showToast({
+        title: '清除失败',
+        icon:'none'
+      })
+    }
   }
 })

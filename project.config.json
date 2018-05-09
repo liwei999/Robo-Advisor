@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 15,
 			"list": [
 				{
 					"id": -1,
@@ -119,6 +119,18 @@
 					"id": -1,
 					"name": "我的教育规划",
 					"pathName": "pages/education/education",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "心愿详情",
+					"pathName": "pages/wish_detailed/wish_detailed",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "设置",
+					"pathName": "pages/setup/setup",
 					"query": ""
 				}
 			]
